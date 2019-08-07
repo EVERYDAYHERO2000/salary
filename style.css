@@ -6,6 +6,12 @@ body {
   background-color: #0f1b27;
 }
 
+@media screen and (max-width: 500px) {
+  body {
+    font-family: 14px;
+  }  
+}
+
 #app {
   padding: 2rem;
   color: rgba(255, 255, 255, 0.5);
@@ -32,11 +38,30 @@ body {
   transition: all .2s;
 }
 
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.input_not-empty {
+  letter-spacing: 2px;
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    font-family: .8rem;
+  }  
+}
+
 .input:focus {
   outline:none;
   background-color: rgba(255,255,255,0.05);
-  transition: all .2s;
-  letter-spacing: 1px;
+  transition: background .2s;
+  
 }
 
 .result {
@@ -70,6 +95,12 @@ body {
 .cost {
   color: #ffba00;
   font-size: 1.3rem;
+}
+
+@media screen and (max-width: 500px) {
+  .cost {
+    font-family: 1rem;
+  }  
 }
 
 hr {
