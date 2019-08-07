@@ -15,7 +15,17 @@ $(function(){
   var $input = $inApp.find('.input');
   var $result = $inApp.find('.result');
   
-  $(this).change();
+  
+  
+  if ( location.hash ){
+    var value = +location.hash.replace('#salary=','');
+    $input.val(value);
+    renderResult(value);
+    
+  } else {
+    renderResult(0);
+  }
+  
   
   $input.change(function(){
     $(this).keyup();
@@ -23,10 +33,16 @@ $(function(){
   
   $input.keyup(function(){
     var value = +$(this).val();
+    
+    var d = renderResult(value);
+    
+    
+    location.hash = '#salary=' + d.net;
+    
+  });
+  
+  function renderResult(value){
     var d = salary.setNet(value);
-    
-
-    
     var $data = $(
 `
 <div class="result__line"><div>Стоимость сотрудника для работодателя в месяц</div><div><span class="cost">${formatUnit(d.fullCost)}</span> руб.</div></div>
@@ -41,10 +57,10 @@ $(function(){
 `
     );
     
-    
     $result.html('').append($data);
     
-  });
+    return d;
+  }
   
   function formatUnit(value){
     value = (/\.\d/.test(value)) ? value + '' : value + '.00';
