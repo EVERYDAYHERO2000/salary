@@ -10,8 +10,12 @@ $(function(){
 </div>`
   );
   
+  
+  
   var $input = $inApp.find('.input');
   var $result = $inApp.find('.result');
+  
+  $(this).change();
   
   $input.change(function(){
     $(this).keyup();
