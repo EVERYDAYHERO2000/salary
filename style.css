@@ -72,6 +72,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding : .5rem 0;
+  position: relative;
 }
 
 .result__line div:first-child {
