@@ -55,7 +55,7 @@ $(function(){
 <div class="result__line"><div>Столько на вас зарабатывает государство в месяц</div><div><span class="cost">${formatUnit(d.nalogAll)}</span>&nbsp;руб.</div></div>
 <hr>
 <div class="result__line"><div>Налог на доходы физических лиц (НДФЛ)</div><div><span class="cost">${formatUnit(d.ndfl)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>В фонд Обязательного пенсионное страхование (ОПС)</div><div><span class="cost">${formatUnit(d.ops)}</span>&nbsp;руб.</div></div>
+<div class="result__line"><div>В фонд Обязательного пенсионного страхования (ОПС)</div><div><span class="cost">${formatUnit(d.ops)}</span>&nbsp;руб.</div></div>
 <div class="result__line"><div>Обязательное медицинское страхование жизни (ОМС)</div><div><span class="cost">${formatUnit(d.oms)}</span>&nbsp;руб.</div></div>
 <div class="result__line"><div>В фонд социального страхования (ФСС)</div><div><span class="cost">${formatUnit(d.fss)}</span>&nbsp;руб.</div></div>
 <div class="result__line"><div>Взносы по «травматизму»</div><div><span class="cost">${formatUnit(d.insurance)}</span>&nbsp;руб.</div></div>
