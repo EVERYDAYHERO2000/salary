@@ -53,7 +53,7 @@ body {
 
 @media screen and (max-width: 500px) {
   .input {
-    font-family: .8rem;
+    font-size: .8rem;
   }  
 }
 
@@ -100,7 +100,7 @@ body {
 
 @media screen and (max-width: 500px) {
   .cost {
-    font-family: 1rem;
+    font-size: 1rem;
   }  
 }
 
