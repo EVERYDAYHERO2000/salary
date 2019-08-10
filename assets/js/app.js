@@ -7,8 +7,8 @@ $(function () {
 <din>
   <form>
   <div class="search">
-    <input type="number" min="0" maxlength="12" max="3000000" pattern="[0-9]+" autofocus class="search__input" />
-    <div class="search__placeholder"><span>Зарплата на руки (нетто)</span></div>
+    <input name="search" type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
+    <label for="search" class="search__placeholder">Cумма которая получается на руки (нетто)</label> 
   </div>
   </form>
   <div class="result">
