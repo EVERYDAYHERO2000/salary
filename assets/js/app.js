@@ -1,99 +1,208 @@
-$(function(){
+$(function () {
   var salary = new Salary();
-  
+
   var $app = $('#app').html('');
-  
-  var $inApp = $(
-`<din>
+
+  var $inApp = $(`
+<din>
   <form>
   <div class="search">
-    <input type="number" min="0" max="3000000" autofocus class="search__input" />
-    <div class="search__placeholder"><span>Cумма которая получается на руки (нетто)</span></div>
+    <input type="number" min="0" maxlength="12" max="3000000" pattern="[0-9]+" autofocus class="search__input" />
+    <div class="search__placeholder"><span>Зарплата на руки (нетто)</span></div>
   </div>
   </form>
-  <div class="result"></div>
+  <div class="result">
+    <div class="result__line" id="gross">
+      <div class="result__head">
+        <div class="result__title">Оклад (гросс)</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Оклад до вычета НДФЛ. Именно гросс оклад фиксируются в трудовом договоре с сотрудником</p>
+      </div>
+    </div>
+
+    <div class="result__line" id="fullCost">
+      <div class="result__head">
+        <div class="result__title">Стоимость сотрудника для работодателя</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="result__line" id="nalogAll">
+      <div class="result__head">
+        <div class="result__title">Все выплаты государству</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="result__line" id="ndfl">
+      <div class="result__head">
+        <div class="result__title">Налог на доходы физических лиц (НДФЛ)</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Работодатель выплачивает за сотрудника налог государству как налоговый агент. Налог на доход для физического лица включен в оклад сотрудника и составляет 13% от оклада</p>
+      </div>
+    </div>
+
+    <div class="result__line" id="ops">
+      <div class="result__head">
+        <div class="result__title">В фонд Обязательного пенсионного страхования (ОПС)</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет 22% от оклада</p>
+      </div>
+    </div>
+
+    <div class="result__line" id="oms">
+      <div class="result__head">
+        <div class="result__title">Обязательное медицинское страхование жизни (ОМС)</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет 5,1% от оклада</p>
+      </div>
+    </div>
+
+    <div class="result__line" id="fss">
+      <div class="result__head">
+        <div class="result__title">В фонд социального страхования (ФСС)</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет 2,9% от оклада</p>
+      </div>
+    </div>
+
+    <div class="result__line" id="insurance">
+      <div class="result__head">
+        <div class="result__title">Взносы по «травматизму»</div>
+        <div class="result__per-month">
+          <span class="cost">0</span> ₽/мес
+        </div>
+      </div>
+      <div class="result__body">
+        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально 0,2% от оклада</p>
+      </div>
+    </div>
+  </div>
 </div>`
   );
-  
-  
-  
+
+  $app.append($inApp);
+
   var $input = $inApp.find('.search__input');
   var $result = $inApp.find('.result');
-  
-  
-  if ( location.hash ){
-    var value = +location.hash.replace('#','');
+
+
+  if (location.hash) {
+    var value = +location.hash.replace('#', '');
     $input.val(value);
     renderResult(value);
-    
+
   } else {
     renderResult(0);
   }
-  
+
   setValue($input);
-  
-  $input.change(function(){
+
+  $input.change(function () {
     $(this).keyup();
   });
+
+  $result.find('.result__title').on('click',function(){
+    $(this).parent().parent().find('.result__body').toggleClass('result__body_visible');
+  });
   
-  $input.keyup(function(){
+  $input.keyup(function (event) {
+
+
+
     var value = +$(this).val();
-    
-    
+
+
     setValue($(this));
 
-    
+
     var d = renderResult(value);
-    
-    if ($(this).val()){
+
+    if ($(this).val()) {
       $(this).addClass('search__input_not-empty');
     } else {
       $(this).removeClass('search__input_not-empty');
     }
-    
-    
+
+
     location.hash = '#' + d.net;
-    
+
+
   });
-  
-  function renderResult(value){
+
+  function renderResult(value) {
     var d = salary.setNet(value);
-    var $data = $(
-`
-<div class="result__line"><div>Оклад (гросс)</div><div><span class="cost">${formatUnit(d.gross)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>Стоимость сотрудника для работодателя в месяц</div><div><span class="cost">${formatUnit(d.fullCost)}</span>&nbsp;руб.</div></div>
-<hr>
-<div class="result__line"><div>Столько на вас зарабатывает государство в месяц</div><div><span class="cost">${formatUnit(d.nalogAll)}</span>&nbsp;руб.</div></div>
-<hr>
-<div class="result__line"><div>Налог на доходы физических лиц (НДФЛ)</div><div><span class="cost">${formatUnit(d.ndfl)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>В фонд Обязательного пенсионного страхования (ОПС)</div><div><span class="cost">${formatUnit(d.ops)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>Обязательное медицинское страхование жизни (ОМС)</div><div><span class="cost">${formatUnit(d.oms)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>В фонд социального страхования (ФСС)</div><div><span class="cost">${formatUnit(d.fss)}</span>&nbsp;руб.</div></div>
-<div class="result__line"><div>Взносы по «травматизму»</div><div><span class="cost">${formatUnit(d.insurance)}</span>&nbsp;руб.</div></div>
-`
-    );
     
-    $result.html('').append($data);
+    $('#gross').find('.result__per-month .cost').text(formatUnit(d.gross));
+    
+    $('#fullCost').find('.result__per-month .cost').text(formatUnit(d.fullCost));
+    
+    $('#nalogAll').find('.result__per-month .cost').text(formatUnit(d.nalogAll));
+    
+    $('#ndfl').find('.result__per-month .cost').text(formatUnit(d.ndfl));
+    
+    $('#ops').find('.result__per-month .cost').text(formatUnit(d.ops));
+    
+    $('#oms').find('.result__per-month .cost').text(formatUnit(d.oms));
+    
+    $('#fss').find('.result__per-month .cost').text(formatUnit(d.fss));
+    
+    $('#insurance').find('.result__per-month .cost').text(formatUnit(d.insurance));
+    
     
     return d;
   }
-  
-  function setValue($elem){
-    
+
+  function setValue($elem) {
+
     value = $elem.val();
-    
-    if (value){
+
+    if (value) {
       $elem.attr('value', value);
     } else {
       $elem.removeAttr('value');
     }
   }
-  
-  function formatUnit(value){
+
+  function formatUnit(value) {
     value = (/\.\d/.test(value)) ? value + '' : value + '.00';
-    return ( value ).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+    return (value).replace(/\d(?=(\d{3})+\.)/g, '$& ');
   }
-  
-  $app.append($inApp);
-  
+
+
+
 });

@@ -4,13 +4,14 @@ body {
   font-family: sans-serif;
   font-size: 16px;
   background-color: #0f1b27;
+  
+  @media screen and (max-width: 500px) {
+    font-size: 13px;
+  }
+  
+  
 }
 
-@media screen and (max-width: 500px) {
-  body {
-    font-size: 13px;
-  }  
-}
 
 #app {
   padding: 2rem;
@@ -47,9 +48,8 @@ body {
   height: 60px;
   
   @media screen and (max-width: 500px) {
-    & {
       padding: 2rem .8rem .8rem;
-    }
+      font-size: 1.2rem;
   }
   
 }
@@ -70,9 +70,7 @@ body {
   white-space: nowrap;
   
   @media screen and (max-width: 500px) {
-    & {
       padding: 1.35rem .8rem .8rem;
-    }
   }
   
 }
@@ -87,11 +85,6 @@ body {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .search__input {
-    font-size: 1.2rem;
-  }  
-}
 
 .search__input:focus {
   outline:none;
@@ -119,40 +112,64 @@ body {
   justify-content: space-between;
   padding : .5rem 0;
   position: relative;
+  flex-direction: column;
 }
 
-.result__line div:first-child {
-  width: 300px;
+.result__head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.result__body {
+  color: rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 0;
+}
+
+.result__body_visible {
+  height: auto;
+  padding: .5rem 0;
+}
+
+.result__body p {
+  margin: 0 0 .5rem;
+  max-width: 600px;
+}
+
+
+.result__title {
+  width: 600px;
   padding-right: 1rem;
-}
-
-.result__line div:last-child {
-  text-align: right;
-  word-break: keep-all;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 500px) {
+  cursor: pointer;
   
-  .result__line div:first-child {
+  @media screen and (max-width: 500px) {
     width: 50%;
     flex-basis: 50%;
   }
   
 }
 
+.result__per-month, .result__per-year {
+  text-align: right;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+
 .cost {
   color: #ffba00;
   font-size: 1.3rem;
+  
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+  }
+  
 }
 
-@media screen and (max-width: 500px) {
-  .cost {
-    font-size: 1rem;
-  }  
-}
 
 hr {
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
