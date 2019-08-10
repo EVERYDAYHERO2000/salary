@@ -155,6 +155,17 @@ body {
   text-align: right;
   word-break: keep-all;
   white-space: nowrap;
+  min-width: 250px;
+  flex-basis: 250px;
+  
+  @media screen and (max-width: 500px) {
+    min-width: 0;
+    flex-basis:auto;
+  }
+}
+
+.mobile .result__per-year {
+  display: none;
 }
 
 
