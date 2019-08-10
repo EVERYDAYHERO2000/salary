@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   font-weight: 300;
   line-height: 1.5;
-  letter-spacing: .5px;
+  letter-spacing: 1px;
   box-sizing: border-box;
 }
 
@@ -85,10 +85,6 @@ body {
   100% {
     opacity: 1;
   }
-}
-
-.search__input_not-empty {
-  letter-spacing: 2px;
 }
 
 @media screen and (max-width: 500px) {
