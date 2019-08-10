@@ -5,10 +5,12 @@ $(function(){
   
   var $inApp = $(
 `<din>
+  <form>
   <div class="search">
     <input type="number" min="0" max="3000000" autofocus class="search__input" />
     <div class="search__placeholder"><span>Cумма которая получается на руки (нетто)</span></div>
   </div>
+  </form>
   <div class="result"></div>
 </div>`
   );
