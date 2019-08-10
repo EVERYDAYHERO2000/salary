@@ -1,0 +1,21 @@
+{
+  "name": "Калькулятор расчета налогов по зарплате",
+  "short_name": "Налоги с зарплаты",
+  "description": "Какие налоги платит работодатель за сотрудника в России",
+  "dir": "auto",
+  "lang": "ru-RU",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/",
+  "background_color": "#0f1b27",
+  "theme_color": "#0f1b27",
+  "icons": [{
+    "src": "/assets/icons/android-chrome-192x192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }, {
+    "src": "/assets/icons/android-chrome-512x512.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }]
+}
