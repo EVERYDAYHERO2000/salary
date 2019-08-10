@@ -1,7 +1,7 @@
 $(function(){
   var salary = new Salary();
   
-  var $app = $('#app');
+  var $app = $('#app').html('');
   
   var $inApp = $(
 `<din>

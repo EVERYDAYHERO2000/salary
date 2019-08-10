@@ -7,27 +7,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="dist/css/main.css" />
   <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  <script type="text/javascript">
+    (function(m, e, t, r, i, k, a) {
+      m[i] = m[i] || function() {
+        (m[i].a = m[i].a || []).push(arguments)
+      };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(54839833, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/54839833" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+    ym(54839833, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/54839833" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 
 <body>
-  
+
   <div id="app">
+    <din>
+      <form>
+        <div class="search">
+          <input type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
+          <div class="search__placeholder"><span>Cумма которая получается на руки (нетто)</span></div>
+        </div>
+      </form>
+      <div class="result">
+        <div class="result__line">
+          <div>Оклад (гросс)</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <div class="result__line">
+          <div>Стоимость сотрудника для работодателя в месяц</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <hr>
+        <div class="result__line">
+          <div>Столько на вас зарабатывает государство в месяц</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <hr>
+        <div class="result__line">
+          <div>Налог на доходы физических лиц (НДФЛ)</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <div class="result__line">
+          <div>В фонд Обязательного пенсионного страхования (ОПС)</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <div class="result__line">
+          <div>Обязательное медицинское страхование жизни (ОМС)</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <div class="result__line">
+          <div>В фонд социального страхования (ФСС)</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+        <div class="result__line">
+          <div>Взносы по «травматизму»</div>
+          <div><span class="cost">0.00</span>&nbsp;руб.</div>
+        </div>
+      </div>
+    </din>
   </div>
-  
+
   <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
   <script src="dist/js/main.js"></script>
 </body>
