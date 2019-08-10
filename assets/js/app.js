@@ -5,14 +5,17 @@ $(function(){
   
   var $inApp = $(
 `<din>
-  <input type="number" min="0" max="3000000" autofocus placeholder="Укажите сумму которую вы получаете на руки (нетто)" class="input" />
+  <div class="search">
+    <input type="number" min="0" max="3000000" autofocus class="search__input" />
+    <div class="search__placeholder"><span>Cумма которая получается на руки (нетто)</span></div>
+  </div>
   <div class="result"></div>
 </div>`
   );
   
   
   
-  var $input = $inApp.find('.input');
+  var $input = $inApp.find('.search__input');
   var $result = $inApp.find('.result');
   
   
@@ -25,6 +28,7 @@ $(function(){
     renderResult(0);
   }
   
+  setValue($input);
   
   $input.change(function(){
     $(this).keyup();
@@ -33,12 +37,16 @@ $(function(){
   $input.keyup(function(){
     var value = +$(this).val();
     
+    
+    setValue($(this));
+
+    
     var d = renderResult(value);
     
     if ($(this).val()){
-      $(this).addClass('input_not-empty');
+      $(this).addClass('search__input_not-empty');
     } else {
-      $(this).removeClass('input_not-empty');
+      $(this).removeClass('search__input_not-empty');
     }
     
     
@@ -50,6 +58,7 @@ $(function(){
     var d = salary.setNet(value);
     var $data = $(
 `
+<div class="result__line"><div>Оклад (гросс)</div><div><span class="cost">${formatUnit(d.gross)}</span>&nbsp;руб.</div></div>
 <div class="result__line"><div>Стоимость сотрудника для работодателя в месяц</div><div><span class="cost">${formatUnit(d.fullCost)}</span>&nbsp;руб.</div></div>
 <hr>
 <div class="result__line"><div>Столько на вас зарабатывает государство в месяц</div><div><span class="cost">${formatUnit(d.nalogAll)}</span>&nbsp;руб.</div></div>
@@ -65,6 +74,17 @@ $(function(){
     $result.html('').append($data);
     
     return d;
+  }
+  
+  function setValue($elem){
+    
+    value = $elem.val();
+    
+    if (value){
+      $elem.attr('value', value);
+    } else {
+      $elem.removeAttr('value');
+    }
   }
   
   function formatUnit(value){
