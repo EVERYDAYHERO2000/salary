@@ -1,1 +1,3 @@
+User-agent: *
+
 Sitemap: http://salary.com.ru/sitemap.xml
