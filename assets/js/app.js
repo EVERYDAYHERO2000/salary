@@ -214,6 +214,8 @@ $(function () {
 
   function formatUnit(value) {
     value = (/\.\d/.test(value)) ? value + '' : value + '.00';
+    value = (/\.\d{2}/.test(value)) ? value : value + '0';
+
     return (value).replace(/\d(?=(\d{3})+\.)/g, '$& ');
   }
 
