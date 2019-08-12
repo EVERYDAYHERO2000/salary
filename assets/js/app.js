@@ -27,7 +27,7 @@ $(function () {
 <din>
   <form>
   <div class="search">
-    <input name="search" type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
+    <input id="search" type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
     <label for="search" class="search__placeholder">Cумма которая получается на руки (нетто)</label> 
   </div>
   </form>
