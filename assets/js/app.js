@@ -1,16 +1,19 @@
 $(function () {
   var salary = new Salary();
   
-  $(window).resize(setScale);
-  setScale();
-  
-  function setScale(){
-    if ($(window).outerWidth() <= 500){
-      $('#app').addClass('mobile');
-    } else {
-      $('#app').removeClass('mobile');
-    }
+  var products = {
+    salt : 17,
+    buckwheat : 50,
+    dollar : 65,
+    gas_95 : 47.35,
+    gold_585 : 1500,
+    salary_min_2018 : 32635,
+    iphone : 60000,
+    apartment : 6000000,
+    car : 1000000
   }
+  
+  window.inputtimer = null;
 
   var $app = $('#app').html('');
   
@@ -148,13 +151,9 @@ $(function () {
   
   $input.keyup(function (event) {
 
-
-
     var value = +$(this).val();
 
-
     setValue($(this));
-
 
     var d = renderResult(value);
 
@@ -163,9 +162,15 @@ $(function () {
     } else {
       $(this).removeClass('search__input_not-empty');
     }
+    
+    clearTimeout(window.inputtimer);
+    window.inputtimer = setTimeout(function(){
+      if (ym) ym(54839833, 'reachGoal', 'SEARCH_RESULT', { value: value });
+      
+    },1000);
 
 
-    location.hash = '#' + d.net;
+    location.hash = '#' + d.net; 
 
 
   });
@@ -173,29 +178,19 @@ $(function () {
   function renderResult(value) {
     var d = salary.setNet(value);
     
-    $('#gross').find('.result__per-month .cost').text(formatUnit(d.gross));
-    $('#gross').find('.result__per-year .cost').text(formatUnit(d.grossInPeriod));
+    updValue('gross');
+    updValue('fullCost');
+    updValue('nalogAll');
+    updValue('ndfl');
+    updValue('ops');
+    updValue('oms');
+    updValue('fss');
+    updValue('insurance');
     
-    $('#fullCost').find('.result__per-month .cost').text(formatUnit(d.fullCost));
-    $('#fullCost').find('.result__per-year .cost').text(formatUnit(d.fullCostInPeriod));
-    
-    $('#nalogAll').find('.result__per-month .cost').text(formatUnit(d.nalogAll));
-    $('#nalogAll').find('.result__per-year .cost').text(formatUnit(d.nalogAllInPeriod));
-    
-    $('#ndfl').find('.result__per-month .cost').text(formatUnit(d.ndfl));
-    $('#ndfl').find('.result__per-year .cost').text(formatUnit(d.ndflInPeriod));
-    
-    $('#ops').find('.result__per-month .cost').text(formatUnit(d.ops));
-    $('#ops').find('.result__per-year .cost').text(formatUnit(d.opsInPeriod));
-    
-    $('#oms').find('.result__per-month .cost').text(formatUnit(d.oms));
-    $('#oms').find('.result__per-year .cost').text(formatUnit(d.omsInPeriod));
-    
-    $('#fss').find('.result__per-month .cost').text(formatUnit(d.fss));
-    $('#fss').find('.result__per-year .cost').text(formatUnit(d.fssInPeriod));
-    
-    $('#insurance').find('.result__per-month .cost').text(formatUnit(d.insurance));
-    $('#insurance').find('.result__per-year .cost').text(formatUnit(d.insuranceInPeriod));
+    function updValue(v){
+      $('#' + v).find('.result__per-month .cost').text(formatUnit(d[v]));
+      $('#' + v).find('.result__per-year .cost').text(formatUnit(d[v + 'InPeriod']));
+    }
     
     
     return d;

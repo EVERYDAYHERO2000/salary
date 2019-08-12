@@ -52,6 +52,8 @@ gulp.task('js', function () {
        presets: ['@babel/env']
     }))
     .pipe(uglify())
+    .pipe(replace(/\\n+/g, ''))
+    .pipe(replace(/\s+/g, ' '))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(DEV_PATH + '/dist/js/'));
   
