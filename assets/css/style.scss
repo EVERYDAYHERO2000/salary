@@ -128,6 +128,10 @@ body {
   height: 0;
 }
 
+.result__body strong {
+  color: rgba(255, 255, 255, 0.45);
+}
+
 .result__body_visible {
   height: auto;
   padding: .5rem 0;
