@@ -1,5 +1,3 @@
-"use strict"
-
 function Salary(options){
   var __this = this;
   

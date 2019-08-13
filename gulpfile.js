@@ -46,7 +46,7 @@ gulp.task('js', function () {
   gulp.src(DEV_PATH + '/assets/js/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
-    .pipe(gap.prependText('$(function(){'))
+    .pipe(gap.prependText('"use strict" $(function(){'))
     .pipe(gap.appendText(`console.log("version: ${config.version}"); });`))
     .pipe(babel({
        presets: ['@babel/env']
