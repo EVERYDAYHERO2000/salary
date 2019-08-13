@@ -164,8 +164,12 @@ body {
   }
 }
 
-.mobile .result__per-year {
+.mobile .result__head .result__per {
   display: none;
+}
+
+.mobile .result__head .result__per.result__per_selected {
+  display: block;
 }
 
 

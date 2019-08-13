@@ -22,10 +22,10 @@ $(function () {
   var $app = $('#app').html('');
   
   var costs = `
-<div class="result__per-month">
+<div class="result__per result__per-month">
   <span class="cost">0</span> ₽/мес
 </div>
-<div class="result__per-year">
+<div class="result__per result__per-year">
   <span class="cost">0</span> ₽/год
 </div>
 `;
@@ -145,6 +145,18 @@ $(function () {
 
   setValue($input);
 
+  $result.find('.result__head .result__per').each(function(i,e){
+    if ( $(e).is('.result__per-month') ){
+      $(e).addClass('result__per_selected');
+    }
+  });
+  
+  $result.find('.result__per').on('click',function(){
+    if ( $('body').is('.mobile') ){
+      $('.result__per').toggleClass('result__per_selected');
+    }
+  });
+  
   $input.change(function () {
     $(this).keyup();
   });
