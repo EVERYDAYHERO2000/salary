@@ -12,7 +12,8 @@ self.addEventListener('install', (event) => {
                 'favicon-32x32.png',
                 'manifest.json',
                 '/assets/icons/android-chrome-192x192.png',
-                '/assets/icons/android-chrome-512x512.png '
+                '/assets/icons/android-chrome-512x512.png',
+                '/assets/icons/apple-touch-icon.png',
             ]);
         })
     );
