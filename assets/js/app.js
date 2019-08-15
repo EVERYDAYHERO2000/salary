@@ -53,6 +53,7 @@ $(function () {
     <p>Курс конвертации <strong>${dollar}</strong> рублей за <strong>1</strong> доллар</p>
   </div>
 </div>`;
+  
     
   //}
   
