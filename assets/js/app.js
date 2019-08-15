@@ -64,7 +64,7 @@ $(function () {
 
     </section>
 
-    <section>
+    <section> 
 
     <h2>Налоги</h2>
 
