@@ -39,6 +39,9 @@ $(function () {
   </div>
   </form>
   <div class="result">
+
+    <section>
+
     <div class="result__line" id="gross">
       <div class="result__head">
         <div class="result__title">Оклад (гросс)</div>
@@ -59,7 +62,11 @@ $(function () {
       </div>
     </div>
 
-    <hr>
+    </section>
+
+    <section>
+
+    <h2>Налоги</h2>
 
     <div class="result__line" id="nalogAll">
       <div class="result__head">
@@ -122,6 +129,9 @@ $(function () {
         <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально <strong>0,2%</strong> от оклада</p>
       </div>
     </div>
+
+    </section>
+
   </div>
 </div>`
   );
