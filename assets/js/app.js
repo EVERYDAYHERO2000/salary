@@ -38,6 +38,7 @@ $(function () {
   dollar = 65.5;//geoplugin_currencyConverter(1, false);  
   
   dollarTpl = `
+<hr>
 <div class="result__line" id="salaryInDollar">
   <div class="result__head">
     <div class="result__title">На руки в долларах</div>
