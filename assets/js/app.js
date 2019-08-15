@@ -29,6 +29,32 @@ $(function () {
   <span class="cost">0</span> ₽/год
 </div>
 `;
+  
+  var dollarTpl = '',
+      dollar;
+  
+  if ( geoplugin_currencyConverter ){
+    
+  dollar = geoplugin_currencyConverter(1, false);  
+  
+  dollarTpl = `
+<div class="result__line" id="salaryInDollar">
+  <div class="result__head">
+    <div class="result__title">На руки в долларах</div>
+    <div class="result__per result__per-month">
+      <span class="cost cost_dollar">0</span> $/мес
+    </div>
+    <div class="result__per result__per-year">
+      <span class="cost cost_dollar">0</span> $/год
+    </div>
+  </div>
+  <div class="result__body">
+    <p>Курс конвертации <strong>${dollar}</strong> рублей за <strong>1</strong> доллар</p>
+  </div>
+</div>`;
+    
+  }
+  
 
   var $inApp = $(`
 <din>
@@ -61,6 +87,8 @@ $(function () {
         <p>Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются</p>
       </div>
     </div>
+
+    ${dollarTpl}
 
     </section>
 
@@ -212,6 +240,11 @@ $(function () {
     updValue('oms');
     updValue('fss');
     updValue('insurance');
+    
+    if (geoplugin_currencyConverter && dollar){
+      $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / dollar).toFixed(2) ) );
+      $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / dollar).toFixed(2) ) );
+    }
     
     function updValue(v){
       $('#' + v).find('.result__per-month .cost').html(formatUnit(d[v]));
