@@ -33,9 +33,9 @@ $(function () {
   var dollarTpl = '',
       dollar;
   
-  if ( geoplugin_currencyConverter ){
+  //if ( geoplugin_currencyConverter ){
     
-  dollar = geoplugin_currencyConverter(1, false);  
+  dollar = 65.5;//geoplugin_currencyConverter(1, false);  
   
   dollarTpl = `
 <div class="result__line" id="salaryInDollar">
@@ -53,7 +53,7 @@ $(function () {
   </div>
 </div>`;
     
-  }
+  //}
   
 
   var $inApp = $(`
@@ -241,10 +241,10 @@ $(function () {
     updValue('fss');
     updValue('insurance');
     
-    if (geoplugin_currencyConverter && dollar){
+    //if (geoplugin_currencyConverter && dollar){
       $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / dollar).toFixed(2) ) );
       $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / dollar).toFixed(2) ) );
-    }
+    //}
     
     function updValue(v){
       $('#' + v).find('.result__per-month .cost').html(formatUnit(d[v]));
