@@ -204,8 +204,8 @@ $(function () {
     updValue('insurance');
     
     function updValue(v){
-      $('#' + v).find('.result__per-month .cost').text(formatUnit(d[v]));
-      $('#' + v).find('.result__per-year .cost').text(formatUnit(d[v + 'InPeriod']));
+      $('#' + v).find('.result__per-month .cost').html(formatUnit(d[v]));
+      $('#' + v).find('.result__per-year .cost').html(formatUnit(d[v + 'InPeriod']));
     }
     
     
@@ -226,8 +226,12 @@ $(function () {
   function formatUnit(value) {
     value = (/\.\d/.test(value)) ? value + '' : value + '.00';
     value = (/\.\d{2}/.test(value)) ? value : value + '0';
+    value = (value).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+    
+    var cost = value.split('.');
+    value = '<span class="cost__first">' + cost[0] + '</span><span class="cost__last">.' + cost[1] + '</span>';
 
-    return (value).replace(/\d(?=(\d{3})+\.)/g, '$& ');
+    return value;
   }
 
   
