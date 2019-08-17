@@ -64,10 +64,10 @@ function Salary(options){
     result.fotInPeriod       = Unit(result.fot * period);
     
     result.nalogAll          = Unit(result.ops + result.oms + result.fss + result.insurance + result.ndfl);
-    result.nalogAllInPeriod  = Unit(result.nalogAll * period);
+    result.nalogAllInPeriod  = Unit(result.opsInPeriod + result.omsInPeriod + result.fssInPeriod + result.insuranceInPeriod + result.ndflInPeriod);
 
     result.fullCost          = Unit(result.nalogAll + __this.result.net);
-    result.fullCostInPeriod  = Unit(result.fullCost * period);
+    result.fullCostInPeriod  = Unit(result.opsInPeriod + result.omsInPeriod + result.fssInPeriod + result.insuranceInPeriod + result.ndflInPeriod + result.netInPeriod);
     
     return result;
   }
