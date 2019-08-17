@@ -14,7 +14,7 @@ body {
 
 
 #app {
-  padding: 2rem;
+  padding: 1.2rem 2rem;
   color: rgba(255, 255, 255, 0.5);
   background-color: #0f1b27;
   min-height: 100vh;
@@ -40,7 +40,7 @@ body {
   font-size: 2rem;  
   -webkit-appearance: none;
   appearance: none;
-  background-color: transparent;
+  background-color: #0f1b27;
   color:#fff;
   border: none;
   box-sizing: border-box;
@@ -88,7 +88,7 @@ body {
 
 .search__input:focus {
   outline:none;
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgb(42, 59, 78);
   transition: background .2s;
   
 }
@@ -203,4 +203,14 @@ body {
 hr {
   border: none;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.app__inner {
+  position: relative;
+}
+
+.app__form {
+  position: sticky;
+  top: 1.2rem;
+  z-index: 10000;
 }
