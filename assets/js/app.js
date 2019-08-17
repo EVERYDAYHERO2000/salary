@@ -4,7 +4,7 @@ $(function () {
   var products = {
     salt : 17,
     buckwheat : 50,
-    dollar : 65,
+    dollar : 66.6,
     gas_95 : 47.35,
     gold_585 : 1500,
     salary_min_2018 : 32635,
@@ -35,7 +35,7 @@ $(function () {
   
   //if ( geoplugin_currencyConverter ){
     
-  dollar = 65.5;//geoplugin_currencyConverter(1, false);  
+  dollar = products.dollar;//geoplugin_currencyConverter(1, false);  
   
   dollarTpl = `
 <hr>
