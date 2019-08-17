@@ -178,6 +178,8 @@ $(function () {
     var value = +location.hash.replace('#', '');
     $input.val(value);
     renderResult(value);
+    
+    $(document).scrollTop($app.offset().top);
 
   } else {
     renderResult(0);
