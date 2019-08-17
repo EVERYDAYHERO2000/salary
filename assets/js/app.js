@@ -188,7 +188,7 @@ $(function () {
   setValue($input);
 
   $result.find('.result__head .result__per').each(function(i,e){
-    if ( $(e).is('.result__per-month') ){
+    if ( $(e).is('.result__per-year') ){
       $(e).addClass('result__per_selected');
     }
   });
