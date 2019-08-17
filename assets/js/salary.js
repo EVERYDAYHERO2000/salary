@@ -46,10 +46,10 @@ function Salary(options){
     result.grossInPeriod     = Unit(__this.result.gross * period);
     
     result.ops               = Unit( Percentage(value, __this.options.ops) );
-    result.opsInPeriod       = Unit( onPeriod( result.ops, __this.options.opsMax, __this.options.ops2) );
+    result.opsInPeriod       = Unit( maxOnPeriod(result.grossInPeriod, __this.options.opsMax, __this.options.ops, __this.options.ops2) );
     
     result.oms               = Unit( Percentage(value, __this.options.oms) );
-    result.omsInPeriod       = Unit( onPeriod( result.oms, __this.options.omsMax, __this.options.oms2) );
+    result.omsInPeriod       = Unit( maxOnPeriod(result.grossInPeriod, __this.options.omsMax, __this.options.oms, __this.options.oms2) );
     
     result.fss               = Unit( Percentage(value, __this.options.fss) );
     result.fssInPeriod       = Unit(result.fss * period);
@@ -72,46 +72,11 @@ function Salary(options){
     return result;
   }
   
-  function onPeriod(value, max, percentageOnMax){
-    let gross = __this.result.gross;
-    let period = __this.options.period;
-    let step = 1;
-    let currentGross = 0;
-    let result = 0;
-    let lost = 0;
-
-    result = next(step, period, result, gross, max, percentageOnMax, value);
-    
-    
-    
-    function next(step, period, result, gross, max, percentageOnMax, value ){
-      
-      if ( step <= period ) {
+  function maxOnPeriod(grossInPeriod, max, percentageOnMin, percentageOnMax){
         
-        if ( currentGross <= max ){
-          currentGross += gross;
-          result += value;
-
-        } else {
-          lost = currentGross - max;
-          result += Percentage(gross, percentageOnMax);
-      
-        }
-        
-        step++;
-        result = next(step, period, result, gross, max, percentageOnMax, value);
+    return ( grossInPeriod < max ) ? Percentage(grossInPeriod, percentageOnMin) : Percentage(max, percentageOnMin) + Percentage( (grossInPeriod - max), percentageOnMax);
     
-        
-        
-      }
-      
-      return result;
-      
-    } 
-    
-    return result + Percentage(lost, percentageOnMax);  
   }
-  
 
   function onePercent(value){
     return value / 100;  
