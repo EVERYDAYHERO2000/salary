@@ -20,45 +20,73 @@ $(function () {
   window.inputtimer = null;
 
   var $app = $('#app').html('');
-  
-  var costs = `
-<div class="result__per result__per-month">
-  <span class="cost">0</span> ₽/мес
-</div>
-<div class="result__per result__per-year">
-  <span class="cost">0</span> ₽/год
-</div>
-`;
-  
-  var dollarTpl = '',
-      dollar;
-  
-  //if ( geoplugin_currencyConverter ){
     
-  dollar = products.dollar;//geoplugin_currencyConverter(1, false);  
-  
-  dollarTpl = `
-<hr>
-<div class="result__line" id="salaryInDollar">
-  <div class="result__head">
-    <div class="result__title">На руки в долларах</div>
-    <div class="result__per result__per-month">
-      <span class="cost cost_dollar">0</span> $/мес
-    </div>
-    <div class="result__per result__per-year">
-      <span class="cost cost_dollar">0</span> $/год
-    </div>
-  </div>
-  <div class="result__body">
-    <p>Курс конвертации <strong>${dollar}</strong> рублей за <strong>1</strong> доллар</p>
-  </div>
-</div>`;
-  
+  var $inApp = $((function(){
     
-  //}
-  
-
-  var $inApp = $(`
+    let tpl_gross = resultTpl({
+      id:'gross', 
+      title:'Оклад (гросс)', 
+      description :'Оклад до вычета <strong>13%</strong> НДФЛ. Именно гросс оклад фиксируются в трудовом договоре с сотрудником', 
+      unit: '₽'
+    });
+    
+    let tpl_fullCost = resultTpl({
+      id :'fullCost', 
+      title: 'Стоимость сотрудника для работодателя', 
+      description: 'Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются', 
+      unit: '₽'
+    });
+    
+    let tpl_salaryInDollar = resultTpl({
+      id: 'salaryInDollar', 
+      title: 'На руки в долларах', 
+      description: 'Курс конвертации <strong>'+products.dollar+'</strong> рублей за <strong>1</strong> доллар', 
+      unit: '$'
+    });
+    
+    let tpl_nalogAll = resultTpl({
+      id: 'nalogAll', 
+      title: 'Все выплаты государству', 
+      description: 'Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»', 
+      unit: '₽'
+    });
+    
+    let tpl_ndfl = resultTpl({
+      id: 'ndfl', 
+      title: 'Налог на доходы физических лиц (НДФЛ)', 
+      description: 'Работодатель выплачивает за сотрудника налог государству как налоговый агент. Налог на доход для физического лица включен в оклад сотрудника и составляет <strong>13%</strong> от оклада', 
+      unit: '₽'
+    });
+    
+    let tpl_ops = resultTpl({
+      id: 'ops', 
+      title: 'В фонд Обязательного пенсионного страхования (ОПС)', 
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>22%</strong> от оклада', 
+      unit: '₽'
+    });
+    
+    let tpl_oms = resultTpl({
+      id: 'oms', 
+      title: 'Обязательное медицинское страхование жизни (ОМС)', 
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>5,1%</strong> от оклада', 
+      unit: '₽'
+    });
+    
+    let tpl_fss = resultTpl({
+      id: 'fss', 
+      title: 'В фонд социального страхования (ФСС)', 
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>2,9%</strong> от оклада', 
+      unit: '₽'
+    });
+    
+    let tpl_insurance = resultTpl({
+      id : 'insurance', 
+      title: 'Взносы по «травматизму»', 
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально <strong>0,2%</strong> от оклада', 
+      unit: '₽'
+    });
+    
+    let tpl = `
 <din class="app__inner">
   <form class="app__form">
   <div class="search">
@@ -67,104 +95,47 @@ $(function () {
   </div>
   </form>
   <div class="result">
-
     <section>
-
-    <div class="result__line" id="gross">
-      <div class="result__head">
-        <div class="result__title">Оклад (гросс)</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Оклад до вычета <strong>13%</strong> НДФЛ. Именно гросс оклад фиксируются в трудовом договоре с сотрудником</p>
-      </div>
-    </div>
-
-    <div class="result__line" id="fullCost">
-      <div class="result__head">
-        <div class="result__title">Стоимость сотрудника для работодателя</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются</p>
-      </div>
-    </div>
-
-    ${dollarTpl}
-
+      ${tpl_gross}
+      ${tpl_fullCost}  
+      <hr>
+      ${tpl_salaryInDollar}
     </section>
-
     <section> 
-
-    <h2>Налоги</h2>
-
-    <div class="result__line" id="nalogAll">
-      <div class="result__head">
-        <div class="result__title">Все выплаты государству</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»</p>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="result__line" id="ndfl">
-      <div class="result__head">
-        <div class="result__title">Налог на доходы физических лиц (НДФЛ)</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Работодатель выплачивает за сотрудника налог государству как налоговый агент. Налог на доход для физического лица включен в оклад сотрудника и составляет <strong>13%</strong> от оклада</p>
-      </div>
-    </div>
-
-    <div class="result__line" id="ops">
-      <div class="result__head">
-        <div class="result__title">В фонд Обязательного пенсионного страхования (ОПС)</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>22%</strong> от оклада</p>
-      </div>
-    </div>
-
-    <div class="result__line" id="oms">
-      <div class="result__head">
-        <div class="result__title">Обязательное медицинское страхование жизни (ОМС)</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>5,1%</strong> от оклада</p>
-      </div>
-    </div>
-
-    <div class="result__line" id="fss">
-      <div class="result__head">
-        <div class="result__title">В фонд социального страхования (ФСС)</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>2,9%</strong> от оклада</p>
-      </div>
-    </div>
-
-    <div class="result__line" id="insurance">
-      <div class="result__head">
-        <div class="result__title">Взносы по «травматизму»</div>
-        ${costs}
-      </div>
-      <div class="result__body">
-        <p>Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально <strong>0,2%</strong> от оклада</p>
-      </div>
-    </div>
-
+      <h2>Налоги</h2>
+      ${tpl_nalogAll} 
+      <hr>
+      ${tpl_ndfl} 
+      ${tpl_ops} 
+      ${tpl_oms} 
+      ${tpl_fss} 
+      ${tpl_insurance}
     </section>
-
   </div>
-</div>`
-  );
+</div>`;
+    
+    function resultTpl(o){ 
+      
+      var classname = (o.unit == '$') ? 'cost_dollar' : ''; 
+
+      return `<div class="result__line" id="${o.id}">
+    <div class="result__head">
+      <div class="result__title">${o.title}</div>
+      <div class="result__per result__per-month">
+        <span class="cost ${o.classname}">0</span> ${o.unit}/мес
+      </div>
+      <div class="result__per result__per-year">
+        <span class="cost ${o.classname}">0</span> ${o.unit}/год
+      </div>
+    </div>
+    <div class="result__body">
+      <p>${o.description}</p>
+    </div>
+  </div>`;
+    }
+    
+    return tpl;
+  })());
 
   $app.append($inApp);
   
@@ -236,6 +207,8 @@ $(function () {
   function renderResult(value) {
     var d = salary.setNet(value);
     
+    exportToCSV(d);
+    
     updValue('gross');
     updValue('fullCost');
     updValue('nalogAll');
@@ -246,8 +219,8 @@ $(function () {
     updValue('insurance');
     
     //if (geoplugin_currencyConverter && dollar){
-      $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / dollar).toFixed(2) ) );
-      $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / dollar).toFixed(2) ) );
+      $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / products.dollar).toFixed(2) ) );
+      $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / products.dollar).toFixed(2) ) );
     //}
     
     function updValue(v){
@@ -364,6 +337,21 @@ $(function () {
 	}
   
 };
+  
+  function exportToCSV(o){
+    return `"","В месяц (₽/мес)","В год (₽/год)"\r\n
+"Зарплата на руки",${o.net},${o.netInPeriod}\r\n
+"Оклад",${o.gross},${o.grossInPeriod}\r\n
+"Полная стоимость сотрудника для работодателя",${o.fullCost},${o.fullCostInPeriod}\r\n
+"Все выплаты государству",${o.nalogAll},${o.nalogAllInPeriod}\r\n
+"Налог на доходы физических лиц (НДФЛ)",${o.ndfl},${o.ndflInPeriod}\r\n
+"В фонд Обязательного пенсионного страхования (ОПС)",${o.ops},${o.opsInPeriod}\r\n
+"Обязательное медицинское страхование жизни (ОМС)",${o.oms},${o.omsInPeriod}\r\n
+"В фонд социального страхования (ФСС)",${o.fss},${o.fssInPeriod}\r\n
+"Взносы по «травматизму»",${o.insurance},${o.insuranceInPeriod}\r\n`;
+  }
+  
+  
 
 
 });
