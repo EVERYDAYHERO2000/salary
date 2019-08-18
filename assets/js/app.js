@@ -4,7 +4,7 @@ $(function () {
   var products = {
     salt : 17,
     buckwheat : 50,
-    dollar : 66.6,
+    dollar : 66.49,
     gas_95 : 47.35,
     gold_585 : 1500,
     salary_min_2018 : 32635,
@@ -111,6 +111,9 @@ $(function () {
       ${tpl_fss} 
       ${tpl_insurance}
     </section>
+    <div class="section">
+      <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
+    </div>
   </div>
 </div>`;
     
@@ -207,8 +210,6 @@ $(function () {
   function renderResult(value) {
     var d = salary.setNet(value);
     
-    exportToCSV(d);
-    
     updValue('gross');
     updValue('fullCost');
     updValue('nalogAll');
@@ -218,10 +219,12 @@ $(function () {
     updValue('fss');
     updValue('insurance');
     
-    //if (geoplugin_currencyConverter && dollar){
-      $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / products.dollar).toFixed(2) ) );
-      $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / products.dollar).toFixed(2) ) );
-    //}
+  
+    $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / products.dollar).toFixed(2) ) );
+    $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / products.dollar).toFixed(2) ) );
+    
+    $('#salaryExport').attr('href', 'data:text/csv,' + exportToCSV(d));
+    
     
     function updValue(v){
       $('#' + v).find('.result__per-month .cost').html(formatUnit(d[v]));

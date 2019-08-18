@@ -235,3 +235,29 @@ hr {
   top: 1.2rem;
   z-index: 10000;
 }
+
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.link_export {
+  position: relative;
+  margin-left: 40px;
+}
+
+.link_export:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-image: url(../../assets/img/export.svg);
+  background-size: cover;
+top: -10px;
+    left: -40px;
+}
+
+.section {
+  padding: 2rem 0;
+}
