@@ -4,7 +4,7 @@ $(function () {
   var products = {
     salt : 17,
     buckwheat : 50,
-    dollar : 66.49,
+    dollar : 67,
     gas_95 : 47.35,
     gold_585 : 1500,
     salary_min_2018 : 32635,
@@ -91,7 +91,7 @@ $(function () {
   <form class="app__form">
   <div class="search">
     <input id="search" type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
-    <label for="search" class="search__placeholder">Cумма которая получается на руки (нетто)</label> 
+    <label for="search" class="search__placeholder">Cумма, которая получается на руки (нетто)</label> 
   </div>
   </form>
   <div class="result">
