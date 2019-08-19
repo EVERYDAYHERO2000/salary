@@ -125,10 +125,10 @@ $(function () {
     <div class="result__head">
       <div class="result__title">${o.title}</div>
       <div class="result__per result__per-month">
-        <span class="cost ${o.classname}">0</span> ${o.unit}/мес
+        <span class="cost ${classname}">0</span> ${o.unit}/мес
       </div>
       <div class="result__per result__per-year">
-        <span class="cost ${o.classname}">0</span> ${o.unit}/год
+        <span class="cost ${classname}">0</span> ${o.unit}/год
       </div>
     </div>
     <div class="result__body">
