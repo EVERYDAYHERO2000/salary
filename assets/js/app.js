@@ -677,15 +677,19 @@ $(function () {
       <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
     </div>
     <section>
-      <h2>Средняя зарплата в регионах России за 2019 год</h2>
-      <div id="salaryInRussia">
+      <div class="tab">
+      <h2 class="tab__header">Средняя зарплата в регионах России за 2019 год</h2>
+      <div class="tab__panel tab__panel_hidden" id="salaryInRussia">
         ${salaryInRussiaTpl}
+      </div>
       </div>
     </section>
     <section>
-      <h2>Средняя зарплата по странам мира за 2019 год</h2>
-      <div id="salaryInWorld">
+      <div class="tab">
+      <h2 class="tab__header">Средняя зарплата по странам мира за 2019 год</h2>
+      <div class="tab__panel tab__panel_hidden" id="salaryInWorld">
         ${salaryInWorld}
+      </div>
       </div>
     </section>
   </div>
@@ -697,7 +701,7 @@ $(function () {
 
       return `<div class="result__line" id="${o.id}">
     <div class="result__head">
-      <div class="result__title">${o.title}</div>
+      <div class="result__title result__title_info">${o.title}</div>
       <div class="result__per result__per-month">
         <span class="cost ${classname}">0</span> ${o.unit}/мес
       </div>
@@ -748,12 +752,17 @@ $(function () {
       $('.result__per').toggleClass('result__per_selected');
     }
   });
+  
+  $result.on('click', '.tab__header', function() {
+    $(this).toggleClass('tab__header_open');
+    $(this).next().toggleClass('tab__panel_hidden');
+  });
 
   $input.change(function () {
     $(this).keyup();
   });
 
-  $result.find('.result__title').on('click', function () {
+  $result.find('.result__title_info').on('click', function () {
     $(this).parent().parent().find('.result__body').toggleClass('result__body_visible');
   });
 
