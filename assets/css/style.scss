@@ -136,10 +136,19 @@ body {
   flex-direction: column;
 }
 
+.result__line-my-salary {
+  padding: .5rem 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  background-color: #25384c;
+  border-radius: 5px;
+}
+
 .result__head {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: baseline;
 }
 
 .result__body {
@@ -260,4 +269,8 @@ top: -10px;
 
 .section {
   padding: 2rem 0;
+}
+
+.emoji {
+  color: #fff;
 }

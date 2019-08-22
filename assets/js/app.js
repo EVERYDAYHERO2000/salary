@@ -1,91 +1,337 @@
 $(function () {
   var salary = new Salary();
-  
-  var products = {
-    salt : 17,
-    buckwheat : 50,
-    dollar : 67,
-    gas_95 : 47.35,
-    gold_585 : 1500,
-    salary_min_2018 : 32635,
-    iphone : 60000,
-    apartment : 6000000,
-    car : 1000000
+
+  const products = {
+    salt: 17,
+    buckwheat: 50,
+    dollar: 65.56,
+    gas_95: 47.35,
+    gold_585: 1500,
+    salary_min_2018: 32635,
+    iphone: 60000,
+    apartment: 6000000,
+    car: 1000000
   }
-  
+
+  const salaryInRussia = [
+    {
+      name: "Белгород",
+      value: 27280
+    }, {
+      name: "Брянск",
+      value: 20790
+    }, {
+      name: "Владимир",
+      value: 22770
+    }, {
+      name: "Воронеж",
+      value: 26070
+    }, {
+      name: "Иваново",
+      value: 21120
+    }, {
+      name: "Калуга",
+      value: 27060
+    }, {
+      name: "Кострома",
+      value: 22550
+    }, {
+      name: "Курск",
+      value: 22770
+    }, {
+      name: "Липецк",
+      value: 24640
+    }, {
+      name: "Московская область",
+      value: 42460
+    }, {
+      name: "Орёл",
+      value: 16830
+    }, {
+      name: "Рязань",
+      value: 21340
+    }, {
+      name: "Смоленск",
+      value: 20020
+    }, {
+      name: "Тамбов",
+      value: 21450
+    }, {
+      name: "Тверь",
+      value: 20130
+    }, {
+      name: "Тула",
+      value: 25520
+    }, {
+      name: "Ярославль",
+      value: 26620
+    }, {
+      name: "Москва",
+      value: 66880
+    }, {
+      name: "Карелия",
+      value: 32450
+    }, {
+      name: "Коми",
+      value: 39380
+    }, {
+      name: "Архангельск",
+      value: 36850
+    }, {
+      name: "Вологда",
+      value: 28820
+    }, {
+      name: "Калининград",
+      value: 28820
+    }, {
+      name: "Ленинградская область",
+      value: 28050
+    }, {
+      name: "Мурманск",
+      value: 43670
+    }, {
+      name: "Новгород",
+      value: 27390
+    }, {
+      name: "Псков",
+      value: 24310
+    }, {
+      name: "Санкт-Петербург",
+      value: 45430
+    }, {
+      name: "Адыгея",
+      value: 20680
+    }, {
+      name: "Калмыкия",
+      value: 20130
+    }, {
+      name: "Краснодар",
+      value: 25850
+    }, {
+      name: "Астрахань",
+      value: 27390
+    }, {
+      name: "Волгоград",
+      value: 23650
+    }, {
+      name: "Ростов",
+      value: 23320
+    }, {
+      name: "Дагестан",
+      value: 25160
+    }, {
+      name: "Ингушетия",
+      value: 20790
+    }, {
+      name: "Кабардино-Балкарская",
+      value: 18920
+    }, {
+      name: "Карачаево-Черкесская",
+      value: 18040
+    }, {
+      name: "Северная Осетия",
+      value: 18590
+    }, {
+      name: "Чечня",
+      value: 21010
+    }, {
+      name: "Ставрополь",
+      value: 22000
+    }, {
+      name: "Башкортостан",
+      value: 28160
+    }, {
+      name: "Марий Эл",
+      value: 21230
+    }, {
+      name: "Мордовия",
+      value: 20900
+    }, {
+      name: "Татарстан",
+      value: 27060
+    }, {
+      name: "Удмуртская",
+      value: 23430
+    }, {
+      name: "Чувашия",
+      value: 22990
+    }, {
+      name: "Пермь",
+      value: 27280
+    }, {
+      name: "Киров",
+      value: 22880
+    }, {
+      name: "Нижний Новгород",
+      value: 26840
+    }, {
+      name: "Оренбург",
+      value: 26070
+    }, {
+      name: "Пенза",
+      value: 22990
+    }, {
+      name: "Самара",
+      value: 27060
+    }, {
+      name: "Саратов",
+      value: 23430
+    }, {
+      name: "Ульяновск",
+      value: 22880
+    }, {
+      name: "Курган",
+      value: 22770
+    }, {
+      name: "Свердловск",
+      value: 32780
+    }, {
+      name: "Тюмень",
+      value: 50160
+    }, {
+      name: "Ханты-Мансийский автономный округ",
+      value: 61930
+    }, {
+      name: "Ямало-Ненецкий автономный округ",
+      value: 70620
+    }, {
+      name: "Челябинск",
+      value: 26620
+    }, {
+      name: "Алтай",
+      value: 24860
+    }, {
+      name: "Бурятия",
+      value: 27720
+    }, {
+      name: "Тыва",
+      value: 30580
+    }, {
+      name: "Хакасия",
+      value: 32010
+    }, {
+      name: "Забайкалье",
+      value: 25300
+    }, {
+      name: "Красноярский край",
+      value: 29260
+    }, {
+      name: "Иркутск",
+      value: 32450
+    }, {
+      name: "Кемерово",
+      value: 17490
+    }, {
+      name: "Новосибирск",
+      value: 17600
+    }, {
+      name: "Омск",
+      value: 28820
+    }, {
+      name: "Томск",
+      value: 32230
+    }, {
+      name: "Саха",
+      value: 53460
+    }, {
+      name: "Камчатка",
+      value: 50600
+    }, {
+      name: "Приморск",
+      value: 33990
+    }, {
+      name: "Хабаровск",
+      value: 35200
+    }, {
+      name: "Амур",
+      value: 34540
+    }, {
+      name: "Магадан",
+      value: 55880
+    }, {
+      name: "Сахалин",
+      value: 51260
+    }, {
+      name: "Чукотка",
+      value: 56100
+    }
+  ].sort(compare);
+
   var Browser = browserDetect();
-  
-  $('body').addClass( Browser.isMobile );
-  
+
+  $('body').addClass(Browser.isMobile);
+
   window.inputtimer = null;
 
   var $app = $('#app').html('');
-    
-  var $inApp = $((function(){
-    
+
+  var $inApp = $((function () {
+
     let tpl_gross = resultTpl({
-      id:'gross', 
-      title:'Оклад (гросс)', 
-      description :'Оклад до вычета <strong>13%</strong> НДФЛ. Именно гросс оклад фиксируются в трудовом договоре с сотрудником', 
+      id: 'gross',
+      title: 'Оклад (гросс)',
+      description: 'Оклад до вычета <strong>13%</strong> НДФЛ. Именно гросс оклад фиксируются в трудовом договоре с сотрудником',
       unit: '₽'
     });
-    
+
     let tpl_fullCost = resultTpl({
-      id :'fullCost', 
-      title: 'Стоимость сотрудника для работодателя', 
-      description: 'Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются', 
+      id: 'fullCost',
+      title: 'Стоимость сотрудника для работодателя',
+      description: 'Зарплата сотруднику на руки плюс сумма всех выплат за сотрудника государству. Расходы на организацию рабочего места для сотрудника не учитываются',
       unit: '₽'
     });
-    
+
     let tpl_salaryInDollar = resultTpl({
-      id: 'salaryInDollar', 
-      title: 'На руки в долларах', 
-      description: 'Курс конвертации <strong>'+products.dollar+'</strong> рублей за <strong>1</strong> доллар', 
+      id: 'salaryInDollar',
+      title: 'На руки в долларах',
+      description: 'Курс конвертации <strong>' + products.dollar + '</strong> рублей за <strong>1</strong> доллар',
       unit: '$'
     });
-    
+
     let tpl_nalogAll = resultTpl({
-      id: 'nalogAll', 
-      title: 'Все выплаты государству', 
-      description: 'Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»', 
+      id: 'nalogAll',
+      title: 'Все выплаты государству',
+      description: 'Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»',
       unit: '₽'
     });
-    
+
     let tpl_ndfl = resultTpl({
-      id: 'ndfl', 
-      title: 'Налог на доходы физических лиц (НДФЛ)', 
-      description: 'Работодатель выплачивает за сотрудника налог государству как налоговый агент. Налог на доход для физического лица включен в оклад сотрудника и составляет <strong>13%</strong> от оклада', 
+      id: 'ndfl',
+      title: 'Налог на доходы физических лиц (НДФЛ)',
+      description: 'Работодатель выплачивает за сотрудника налог государству как налоговый агент. Налог на доход для физического лица включен в оклад сотрудника и составляет <strong>13%</strong> от оклада',
       unit: '₽'
     });
-    
+
     let tpl_ops = resultTpl({
-      id: 'ops', 
-      title: 'В фонд Обязательного пенсионного страхования (ОПС)', 
-      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>22%</strong> от оклада', 
+      id: 'ops',
+      title: 'В фонд Обязательного пенсионного страхования (ОПС)',
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>22%</strong> от оклада',
       unit: '₽'
     });
-    
+
     let tpl_oms = resultTpl({
-      id: 'oms', 
-      title: 'Обязательное медицинское страхование жизни (ОМС)', 
-      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>5,1%</strong> от оклада', 
+      id: 'oms',
+      title: 'Обязательное медицинское страхование жизни (ОМС)',
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>5,1%</strong> от оклада',
       unit: '₽'
     });
-    
+
     let tpl_fss = resultTpl({
-      id: 'fss', 
-      title: 'В фонд социального страхования (ФСС)', 
-      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>2,9%</strong> от оклада', 
+      id: 'fss',
+      title: 'В фонд социального страхования (ФСС)',
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника и составляет <strong>2,9%</strong> от оклада',
       unit: '₽'
     });
-    
+
     let tpl_insurance = resultTpl({
-      id : 'insurance', 
-      title: 'Взносы по «травматизму»', 
-      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально <strong>0,2%</strong> от оклада', 
+      id: 'insurance',
+      title: 'Взносы по «травматизму»',
+      description: 'Отчисления идет за счет работодателя. Высчитывается из оклада сотрудника. Размер отчислений зависит от присвоенного класса профессионального риска. Минимально <strong>0,2%</strong> от оклада',
       unit: '₽'
     });
-    
+
+    let salaryInRussiaTpl = renderRegions(salaryInRussia);
+
     let tpl = `
 <din class="app__inner">
   <form class="app__form">
@@ -114,12 +360,18 @@ $(function () {
     <div class="section">
       <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
     </div>
+    <section >
+      <h2>Средняя зарплата в регионах России за 2019 год</h2>
+      <div id="salaryInRussia">
+        ${salaryInRussiaTpl}
+      </div>
+    </section>
   </div>
 </div>`;
-    
-    function resultTpl(o){ 
-      
-      var classname = (o.unit == '$') ? 'cost_dollar' : ''; 
+
+    function resultTpl(o) {
+
+      var classname = (o.unit == '$') ? 'cost_dollar' : '';
 
       return `<div class="result__line" id="${o.id}">
     <div class="result__head">
@@ -136,13 +388,13 @@ $(function () {
     </div>
   </div>`;
     }
-    
+
     return tpl;
   })());
 
   $app.append($inApp);
-  
-  
+
+
 
   var $input = $inApp.find('.search__input');
   var $result = $inApp.find('.result');
@@ -153,34 +405,36 @@ $(function () {
     $input.val(value);
     renderResult(value);
     
+
     $(document).scrollTop($app.offset().top);
 
   } else {
     renderResult(0);
+    
   }
 
   setValue($input);
 
-  $result.find('.result__head .result__per').each(function(i,e){
-    if ( $(e).is('.result__per-year') ){
+  $result.find('.result__head .result__per').each(function (i, e) {
+    if ($(e).is('.result__per-year')) {
       $(e).addClass('result__per_selected');
     }
   });
-  
-  $result.find('.result__per').on('click',function(){
-    if ( $('body').is('.mobile') ){
+
+  $result.on('click','.result__per', function () {
+    if ($('body').is('.mobile')) {
       $('.result__per').toggleClass('result__per_selected');
     }
   });
-  
+
   $input.change(function () {
     $(this).keyup();
   });
 
-  $result.find('.result__title').on('click',function(){
+  $result.find('.result__title').on('click', function () {
     $(this).parent().parent().find('.result__body').toggleClass('result__body_visible');
   });
-  
+
   $input.keyup(function (event) {
 
     var value = +$(this).val();
@@ -194,22 +448,24 @@ $(function () {
     } else {
       $(this).removeClass('search__input_not-empty');
     }
-    
+
     clearTimeout(window.inputtimer);
-    window.inputtimer = setTimeout(function(){
-      if (ym) ym(54839833, 'reachGoal', 'SEARCH_RESULT', { value: value });
-      
-    },1000);
+    window.inputtimer = setTimeout(function () {
+      if (ym) ym(54839833, 'reachGoal', 'SEARCH_RESULT', {
+        value: value
+      });
+
+    }, 1000);
 
 
-    location.hash = '#' + d.net; 
+    location.hash = '#' + d.net;
 
 
   });
 
   function renderResult(value) {
     var d = salary.setNet(value);
-    
+
     updValue('gross');
     updValue('fullCost');
     updValue('nalogAll');
@@ -218,20 +474,22 @@ $(function () {
     updValue('oms');
     updValue('fss');
     updValue('insurance');
-    
-  
-    $('#salaryInDollar').find('.result__per-month .cost').html( formatUnit( (d['net'] / products.dollar).toFixed(2) ) );
-    $('#salaryInDollar').find('.result__per-year .cost').html( formatUnit( (d['netInPeriod'] / products.dollar).toFixed(2) ) );
-    
+
+
+    $('#salaryInDollar').find('.result__per-month .cost').html(formatUnit((d['net'] / products.dollar).toFixed(2)));
+    $('#salaryInDollar').find('.result__per-year .cost').html(formatUnit((d['netInPeriod'] / products.dollar).toFixed(2)));
+
     $('#salaryExport').attr('href', 'data:text/csv,' + exportToCSV(d));
+
+    updateRegions(d['gross'], d['grossInPeriod']);
     
-    
-    function updValue(v){
+
+    function updValue(v) {
       $('#' + v).find('.result__per-month .cost').html(formatUnit(d[v]));
       $('#' + v).find('.result__per-year .cost').html(formatUnit(d[v + 'InPeriod']));
     }
-    
-    
+
+
     return d;
   }
 
@@ -257,91 +515,163 @@ $(function () {
     return value;
   }
 
+  function renderRegions(arr) {
+
+    var result = `<div class="result__line result__line-my-salary">
+    <div class="result__head">
+      <div class="result__title">Моя зарплата (гросс)</div>
+      <div class="result__per result__per-month">
+        <span class="cost">0.00</span> ₽/мес
+      </div>
+      <div class="result__per result__per-year result__per_selected">
+        <span class="cost">0.00</span> ₽/год
+      </div>
+    </div>
+  </div>`;
+    
+    for (var i = 0; i < arr.length; i++) {
+      result += `<div class="result__line result__line-regions" data-salary="${arr[i].value}">
+    <div class="result__head">
+      <div class="result__title">${arr[i].name}</div>
+      <div class="result__per result__per-month">
+        <span class="cost">${formatUnit(arr[i].value)}</span> ₽/мес
+      </div>
+      <div class="result__per result__per-year">
+        <span class="cost">${formatUnit(arr[i].value * 12)}</span> ₽/год
+      </div>
+    </div>
+  </div>`;
+    }
+    
+    return result;
+  }
   
+  
+  function updateRegions(value, valueInPeriod){
+    var $mySalary = $('#salaryInRussia').find('.result__line-my-salary').remove().clone();
+    var similar = 0;
+    var $regions = $('#salaryInRussia').find('.result__line-regions');    
+    
+    $regions.each(function(i,e){
+      
+      if ( $(e).data('salary') >= value ) similar = i;
+      
+    });
+    
+    $mySalary.find('.result__per-month').find('.cost').html(formatUnit(value));
+    $mySalary.find('.result__per-year').find('.cost').html(formatUnit(valueInPeriod));
+        
+    
+    if (value >= $($regions[similar]).data('salary') ){
+      $mySalary.insertBefore( $($regions[similar]) );
+    } else {    
+      $mySalary.insertAfter( $($regions[similar]) );
+    }
+    
+
+    
+  }
+  
+
+  function compare(a, b) {
+      const valueA = a.value;
+      const valueB = b.value;
+
+      let comparison = 0;
+      if (valueA > valueB) {
+        comparison = -1;
+      } else if (valueA < valueB) {
+        comparison = 1;
+      }
+      return comparison;
+    }
+
   function browserDetect() {
+    
+    
 
-	var nVer = navigator.appVersion;
-	var nAgt = navigator.userAgent;
-	var browserName = navigator.appName;
-	var fullVersion = '' + parseFloat(navigator.appVersion);
-	var majorVersion = parseInt(navigator.appVersion, 10);
-	var nameOffset, verOffset, ix;
+    var nVer = navigator.appVersion;
+    var nAgt = navigator.userAgent;
+    var browserName = navigator.appName;
+    var fullVersion = '' + parseFloat(navigator.appVersion);
+    var majorVersion = parseInt(navigator.appVersion, 10);
+    var nameOffset, verOffset, ix;
 
-	if ((verOffset = nAgt.indexOf("Opera")) != -1) {
-		browserName = "opera";
-		fullVersion = nAgt.substring(verOffset + 6);
-		if ((verOffset = nAgt.indexOf("Version")) != -1)
-			fullVersion = nAgt.substring(verOffset + 8);
-    
-	} else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
-		browserName = "ie";
-		fullVersion = nAgt.substring(verOffset + 5);
-    
-	} else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
-		browserName = "chrome";
-		fullVersion = nAgt.substring(verOffset + 7);
-    
-	} else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
-		browserName = "safari";
-		fullVersion = nAgt.substring(verOffset + 7);
-		if ((verOffset = nAgt.indexOf("Version")) != -1)
-			fullVersion = nAgt.substring(verOffset + 8);
-    
-	} else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
-		browserName = "firefox";
-		fullVersion = nAgt.substring(verOffset + 8);
-    
-	} else if (nAgt.indexOf("FBAN") != -1 && nAgt.indexOf("FBAV") != -1 ) {
-		browserName = "facebook";
-		fullVersion = 0;
-    
-	} else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) <
-		(verOffset = nAgt.lastIndexOf('/'))) {
-		browserName = nAgt.substring(nameOffset, verOffset);
-		fullVersion = nAgt.substring(verOffset + 1);
-		if (browserName.toLowerCase() == browserName.toUpperCase()) {
-			browserName = navigator.appName;
-		}
-	}
+    if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+      browserName = "opera";
+      fullVersion = nAgt.substring(verOffset + 6);
+      if ((verOffset = nAgt.indexOf("Version")) != -1)
+        fullVersion = nAgt.substring(verOffset + 8);
 
-	if ((ix = fullVersion.indexOf(";")) != -1)
-		fullVersion = fullVersion.substring(0, ix);
-	if ((ix = fullVersion.indexOf(" ")) != -1)
-		fullVersion = fullVersion.substring(0, ix);
+    } else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+      browserName = "ie";
+      fullVersion = nAgt.substring(verOffset + 5);
 
-	majorVersion = parseInt('' + fullVersion, 10);
-	if (isNaN(majorVersion)) {
-		fullVersion = '' + parseFloat(navigator.appVersion);
-		majorVersion = parseInt(navigator.appVersion, 10);
-	}
+    } else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+      browserName = "chrome";
+      fullVersion = nAgt.substring(verOffset + 7);
 
-  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  var ratio = window.devicePixelRatio || 1;
-  var screen = {
-    width : window.screen.width * ratio,
-    height : window.screen.height * ratio
+    } else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+      browserName = "safari";
+      fullVersion = nAgt.substring(verOffset + 7);
+      if ((verOffset = nAgt.indexOf("Version")) != -1)
+        fullVersion = nAgt.substring(verOffset + 8);
+
+    } else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
+      browserName = "firefox";
+      fullVersion = nAgt.substring(verOffset + 8);
+
+    } else if (nAgt.indexOf("FBAN") != -1 && nAgt.indexOf("FBAV") != -1) {
+      browserName = "facebook";
+      fullVersion = 0;
+
+    } else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) <
+      (verOffset = nAgt.lastIndexOf('/'))) {
+      browserName = nAgt.substring(nameOffset, verOffset);
+      fullVersion = nAgt.substring(verOffset + 1);
+      if (browserName.toLowerCase() == browserName.toUpperCase()) {
+        browserName = navigator.appName;
+      }
+    }
+
+    if ((ix = fullVersion.indexOf(";")) != -1)
+      fullVersion = fullVersion.substring(0, ix);
+    if ((ix = fullVersion.indexOf(" ")) != -1)
+      fullVersion = fullVersion.substring(0, ix);
+
+    majorVersion = parseInt('' + fullVersion, 10);
+    if (isNaN(majorVersion)) {
+      fullVersion = '' + parseFloat(navigator.appVersion);
+      majorVersion = parseInt(navigator.appVersion, 10);
+    }
+
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    var ratio = window.devicePixelRatio || 1;
+    var screen = {
+      width: window.screen.width * ratio,
+      height: window.screen.height * ratio
+    };
+
+    return {
+      browserName: browserName.toLowerCase(),
+      fullVersion: fullVersion,
+      majorVersion: majorVersion,
+      appName: navigator.appName.toLowerCase(),
+      userAgent: navigator.userAgent.toLowerCase(),
+      platform: navigator.platform.toLowerCase(),
+      iphoneX: (iOS && screen.width == 1125 && screen.height === 2436) ? 'iphoneX' : '',
+      isMobile: (function () {
+        var check = 'not-mobile';
+        (function (a) {
+          if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = 'mobile';
+        })(navigator.userAgent || navigator.vendor || window.opera);
+        return check;
+      })()
+    }
+
   };
-  
-	return {
-		browserName: browserName.toLowerCase(),
-		fullVersion: fullVersion,
-		majorVersion: majorVersion,
-		appName: navigator.appName.toLowerCase(),
-		userAgent: navigator.userAgent.toLowerCase(),
-		platform: navigator.platform.toLowerCase(),
-    iphoneX: (iOS && screen.width == 1125 && screen.height === 2436) ? 'iphoneX' : '',
-		isMobile: (function () {
-			var check = 'not-mobile';
-			(function (a) {
-				if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = 'mobile';
-			})(navigator.userAgent || navigator.vendor || window.opera);
-			return check;
-		})()
-	}
-  
-};
-  
-  function exportToCSV(o){
+
+  function exportToCSV(o) {
     return `"","В месяц (₽/мес)","В год (₽/год)"\r\n
 "Зарплата на руки",${o.net},${o.netInPeriod}\r\n
 "Оклад",${o.gross},${o.grossInPeriod}\r\n
@@ -353,8 +683,8 @@ $(function () {
 "В фонд социального страхования (ФСС)",${o.fss},${o.fssInPeriod}\r\n
 "Взносы по «травматизму»",${o.insurance},${o.insuranceInPeriod}\r\n`;
   }
-  
-  
+
+
 
 
 });
