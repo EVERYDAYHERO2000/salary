@@ -13,6 +13,320 @@ $(function () {
     car: 1000000
   }
 
+  const salaryInWorlds = [
+  {
+    "flag": "🇲🇨",
+    "name": "Монако",
+    "value": 15506.67
+  }, {
+    "flag": "🇱🇮",
+    "name": "Лихтенштейн",
+    "value": 9691.67
+  }, {
+    "flag": "🇧🇲",
+    "name": "Бермуды",
+    "value": 8845
+  }, {
+    "flag": "🇨🇭",
+    "name": "Швейцария",
+    "value": 6713.33
+  }, {
+    "flag": "🇳🇴",
+    "name": "Норвегия",
+    "value": 6332.5
+  }, {
+    "flag": "🇲🇴",
+    "name": "Макао",
+    "value": 6004.17
+  }, {
+    "flag": "🇱🇺",
+    "name": "Люксембург",
+    "value": 5855
+  }, {
+    "flag": "🇮🇸",
+    "name": "Исландия",
+    "value": 5069.17
+  }, {
+    "flag": "🇺🇸",
+    "name": "США",
+    "value": 4855.83
+  }, {
+    "flag": "🇮🇪",
+    "name": "Ирландия",
+    "value": 4607.5
+  }, {
+    "flag": "🇩🇰",
+    "name": "Дания",
+    "value": 4601.67
+  }, {
+    "flag": "🇸🇬",
+    "name": "Сингапур",
+    "value": 4544.17
+  }, {
+    "flag": "🇸🇪",
+    "name": "Швеция",
+    "value": 4382.5
+  }, {
+    "flag": "🇦🇺",
+    "name": "Австралия",
+    "value": 4280
+  }, {
+    "flag": "🇭🇰",
+    "name": "Гонконг",
+    "value": 3859.17
+  }, {
+    "flag": "🇳🇱",
+    "name": "Нидерланды",
+    "value": 3848.33
+  }, {
+    "flag": "🇦🇹",
+    "name": "Австрия",
+    "value": 3786.67
+  }, {
+    "flag": "🇫🇮",
+    "name": "Финляндия",
+    "value": 3715
+  }, {
+    "flag": "🇩🇪",
+    "name": "Германия",
+    "value": 3624.17
+  }, {
+    "flag": "🇨🇦",
+    "name": "Канада",
+    "value": 3572.5
+  }, {
+    "flag": "🇧🇪",
+    "name": "Бельгия",
+    "value": 3482.5
+  }, {
+    "flag": "🇬🇧",
+    "name": "Великобритания",
+    "value": 3377.5
+  }, {
+    "flag": "🇦🇪",
+    "name": "ОАЭ",
+    "value": 3260.83
+  }, {
+    "flag": "🇳🇿",
+    "name": "Новая Зеландия",
+    "value": 3247.5
+  }, {
+    "flag": "🇯🇵",
+    "name": "Япония",
+    "value": 3212.5
+  }, {
+    "flag": "🇫🇷",
+    "name": "Франция",
+    "value": 3164.17
+  }, {
+    "flag": "🇮🇱",
+    "name": "Израиль",
+    "value": 3105.83
+  }, {
+    "flag": "🇮🇹",
+    "name": "Италия",
+    "value": 2585
+  }, {
+    "flag": "🇰🇷",
+    "name": "Южная Корея",
+    "value": 2365
+  }, {
+    "flag": "🇪🇸",
+    "name": "Испания",
+    "value": 2265
+  }, {
+    "flag": "🇸🇦",
+    "name": "Саудовская Аравия",
+    "value": 1674.17
+  }, {
+    "flag": "🇵🇹",
+    "name": "Португалия",
+    "value": 1651.67
+  }, {
+    "flag": "🇨🇿",
+    "name": "Чехия",
+    "value": 1513.33
+  }, {
+    "flag": "🇬🇷",
+    "name": "Греция",
+    "value": 1507.5
+  }, {
+    "flag": "🇨🇱",
+    "name": "Чили",
+    "value": 1134.17
+  }, {
+    "flag": "🇦🇷",
+    "name": "Аргентина",
+    "value": 1085.83
+  }, {
+    "flag": "🇭🇺",
+    "name": "Венгрия",
+    "value": 1072.5
+  }, {
+    "flag": "🇻🇪",
+    "name": "Венесуэла",
+    "value": 1065
+  }, {
+    "flag": "🇵🇱",
+    "name": "Польша",
+    "value": 1060.83
+  }, {
+    "flag": "🇭🇷",
+    "name": "Хорватия",
+    "value": 1047.5
+  }, {
+    "flag": "🇨🇷",
+    "name": "Коста-Рика",
+    "value": 926.67
+  }, {
+    "flag": "🇹🇷",
+    "name": "Турция",
+    "value": 911.67
+  }, {
+    "flag": "🇷🇴",
+    "name": "Румыния",
+    "value": 833.33
+  }, {
+    "flag": "🇲🇾",
+    "name": "Малайзия",
+    "value": 804.17
+  }, {
+    "flag": "🇷🇺",
+    "name": "Россия",
+    "value": 769.17
+  }, {
+    "flag": "🇨🇳",
+    "name": "Китай",
+    "value": 724.17
+  }, {
+    "flag": "🇲🇽",
+    "name": "Мексика",
+    "value": 717.5
+  }, {
+    "flag": "🇧🇷",
+    "name": "Бразилия",
+    "value": 716.67
+  }, {
+    "flag": "🇰🇿",
+    "name": "Казахстан",
+    "value": 664.17
+  }, {
+    "flag": "🇧🇬",
+    "name": "Болгария",
+    "value": 655
+  }, {
+    "flag": "🇨🇺",
+    "name": "Куба",
+    "value": 595.83
+  }, {
+    "flag": "🇬🇳",
+    "name": "Гвинея",
+    "value": 587.5
+  }, {
+    "flag": "🇵🇪",
+    "name": "Перу",
+    "value": 496.67
+  }, {
+    "flag": "🇹🇭",
+    "name": "Таиланд",
+    "value": 495.83
+  }, {
+    "flag": "🇪🇨",
+    "name": "Эквадор",
+    "value": 493.33
+  }, {
+    "flag": "🇨🇴",
+    "name": "Колумбия",
+    "value": 490.83
+  }, {
+    "flag": "🇮🇷",
+    "name": "Иран",
+    "value": 452.5
+  }, {
+    "flag": "🇿🇦",
+    "name": "Южная Африка",
+    "value": 452.5
+  }, {
+    "flag": "🇷🇸",
+    "name": "Сербия",
+    "value": 431.67
+  }, {
+    "flag": "🇧🇦",
+    "name": "Босния",
+    "value": 409.17
+  }, {
+    "flag": "🇦🇱",
+    "name": "Албания",
+    "value": 360
+  }, {
+    "flag": "🇱🇰",
+    "name": "Шри Ланка",
+    "value": 320.83
+  }, {
+    "flag": "🇵🇭",
+    "name": "Филиппины",
+    "value": 305
+  }, {
+    "flag": "🇮🇩",
+    "name": "Индонезия",
+    "value": 295
+  }, {
+    "flag": "🇪🇬",
+    "name": "Египет",
+    "value": 250.83
+  }, {
+    "flag": "🇲🇦",
+    "name": "Марокко",
+    "value": 238.33
+  }, {
+    "flag": "🇺🇦",
+    "name": "Украина",
+    "value": 199.17
+  }, {
+    "flag": "🇻🇳",
+    "name": "Вьетнам",
+    "value": 180
+  }, {
+    "flag": "🇳🇬",
+    "name": "Нигерия",
+    "value": 175
+  }, {
+    "flag": "🇸🇾",
+    "name": "Сирия",
+    "value": 153.33
+  }, {
+    "flag": "🇮🇳",
+    "name": "Индия",
+    "value": 150
+  }, {
+    "flag": "🇵🇰",
+    "name": "Пакистан",
+    "value": 131.67
+  }, {
+    "flag": "🇧🇩",
+    "name": "Бангладеш",
+    "value": 122.5
+  }, {
+    "flag": "🇰🇪",
+    "name": "Кения",
+    "value": 121.67
+  }, {
+    "flag": "🇪🇹",
+    "name": "Эфиопия",
+    "value": 61.67
+  }, {
+    "flag": "🇦🇫",
+    "name": "Афганистан",
+    "value": 46.67
+  }, {
+    "flag": "🇨🇩",
+    "name": "Демократическая Республика Конго",
+    "value": 38.33
+  }, {
+    "flag": "🇲🇬",
+    "name": "Мадагаскар",
+    "value": 33.33
+  }].sort(compare);
   const salaryInRussia = [
     {
       name: "Белгород",
@@ -331,6 +645,8 @@ $(function () {
     });
 
     let salaryInRussiaTpl = renderRegions(salaryInRussia);
+  
+    let salaryInWorld = renderWorld(salaryInWorlds);
 
     let tpl = `
 <din class="app__inner">
@@ -360,10 +676,16 @@ $(function () {
     <div class="section">
       <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
     </div>
-    <section >
+    <section>
       <h2>Средняя зарплата в регионах России за 2019 год</h2>
       <div id="salaryInRussia">
         ${salaryInRussiaTpl}
+      </div>
+    </section>
+    <section>
+      <h2>Средняя зарплата по странам мира за 2019 год</h2>
+      <div id="salaryInWorld">
+        ${salaryInWorld}
       </div>
     </section>
   </div>
@@ -481,7 +803,8 @@ $(function () {
 
     $('#salaryExport').attr('href', 'data:text/csv,' + exportToCSV(d));
 
-    updateRegions(d['gross'], d['grossInPeriod']);
+    updateRegions('#salaryInRussia', d['gross'], d['grossInPeriod']);
+    updateRegions('#salaryInWorld', d['gross'], d['grossInPeriod']);
     
 
     function updValue(v) {
@@ -537,7 +860,7 @@ $(function () {
         <span class="cost">${formatUnit(arr[i].value)}</span> ₽/мес
       </div>
       <div class="result__per result__per-year">
-        <span class="cost">${formatUnit(arr[i].value * 12)}</span> ₽/год
+        <span class="cost">${formatUnit((arr[i].value * 12).toFixed(2))}</span> ₽/год
       </div>
     </div>
   </div>`;
@@ -546,11 +869,24 @@ $(function () {
     return result;
   }
   
+  function renderWorld(arr) {
+
+    var newArr = arr.slice();
+    
+    for (var i = 0; i < newArr.length; i++) {
+      newArr[i].value = (newArr[i].value * products.dollar).toFixed(2);
+      newArr[i].name = '<span class="emoji">'+ newArr[i].flag +'</span> ' + newArr[i].name;
+    }
+    
+    return renderRegions(newArr);
+    
+  }
+  
    
-  function updateRegions(value, valueInPeriod){
-    var $mySalary = $('#salaryInRussia').find('.result__line-my-salary').remove().clone();
+  function updateRegions(target, value, valueInPeriod){
+    var $mySalary = $(target).find('.result__line-my-salary').remove().clone();
     var similar = 0;
-    var $regions = $('#salaryInRussia').find('.result__line-regions');    
+    var $regions = $(target).find('.result__line-regions');    
     
     $regions.each(function(i,e){
       
