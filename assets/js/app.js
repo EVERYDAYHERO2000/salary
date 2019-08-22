@@ -546,7 +546,7 @@ $(function () {
     return result;
   }
   
-  
+   
   function updateRegions(value, valueInPeriod){
     var $mySalary = $('#salaryInRussia').find('.result__line-my-salary').remove().clone();
     var similar = 0;
