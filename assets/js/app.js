@@ -527,7 +527,7 @@ $(function () {
         <span class="cost">0.00</span> ₽/год
       </div>
     </div>
-  </div>`;
+  </div>`;    
     
     for (var i = 0; i < arr.length; i++) {
       result += `<div class="result__line result__line-regions" data-salary="${arr[i].value}">
