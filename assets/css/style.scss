@@ -18,6 +18,11 @@ body {
   line-height: 1.5;
   letter-spacing: 1px;
   font-weight: 300;
+  
+  @media screen and (max-width: 500px) {
+    letter-spacing: .5px;  
+  }
+  
 }
 
 .content h1 {
