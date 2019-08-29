@@ -729,6 +729,8 @@ $(function () {
 
   $app.append($inApp);
 
+  
+  
 
 
   var $input = $inApp.find('.search__input');

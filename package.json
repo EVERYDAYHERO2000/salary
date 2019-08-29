@@ -1,7 +1,7 @@
 {
     "name": "salary",
     "description": "Payroll tax calculation",
-    "version": "0.1.0",
+    "version": "0.1.5",
     "repository": "https://github.com/EVERYDAYHERO2000/salary.git",
     "license": "MIT",
     "scripts": {
