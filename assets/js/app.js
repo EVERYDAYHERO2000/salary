@@ -909,13 +909,19 @@ $(function () {
 
 
   function updateRegions(target, value, valueInPeriod) {
+    
     var $mySalary = $(target).find('.result__line-active').remove().clone();
+    var $description = $(target).parent().find('.tab__description');
     var similar = 0;
     var $regions = $(target).find('.result__line-regions');
+    var message = '';
+    
 
     $regions.each(function (i, e) {
 
-      if ($(e).data('salary') >= value) similar = i;
+      if ($(e).data('salary') >= value) {
+        similar = i;
+      }
 
     });
 
@@ -925,12 +931,21 @@ $(function () {
 
     if (value >= $($regions[similar]).data('salary')) {
       $mySalary.insertBefore($($regions[similar]));
+      
+      message += `Зарплата ${value} ₽/мес больше чем средняя зарплата в ${$($regions[similar]).find('.result__title').text()}`;
+    
     } else {
       $mySalary.insertAfter($($regions[similar]));
+      
+      message += ( $($regions[similar + 1]).length ) ? `Зарплата ${value} ₽/мес больше чем средняя зарплата в <strong>${$($regions[similar + 1]).find('.result__title').html()}</strong>` : '';
+      
+      message += ( $($regions[similar + 1]).length ) ? ` но меньше чем в <strong>${$($regions[similar]).find('.result__title').html()}</strong>` : `Зарплата ${value} ₽/мес меньше чем средняя зарплата в <strong>${$($regions[similar]).find('.result__title').html()}</strong>`;
+      
     }
-
-
-
+    
+    
+    $description.html(message);
+    
   }
 
 
