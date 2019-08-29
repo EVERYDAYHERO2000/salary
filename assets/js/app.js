@@ -932,7 +932,7 @@ $(function () {
     if (value >= $($regions[similar]).data('salary')) {
       $mySalary.insertBefore($($regions[similar]));
       
-      message += `Зарплата ${value} ₽/мес больше чем средняя зарплата в ${$($regions[similar]).find('.result__title').text()}`;
+      message += `Зарплата ${value} ₽/мес больше чем средняя зарплата в <strong>${$($regions[similar]).find('.result__title').text()}</strong>`;
     
     } else {
       $mySalary.insertAfter($($regions[similar]));
