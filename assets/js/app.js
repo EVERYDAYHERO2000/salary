@@ -4,7 +4,7 @@ $(function () {
   const products = {
     salt: 17,
     buckwheat: 50,
-    dollar: 66.75,
+    dollar: 66.55,
     gas_95: 47.35,
     gold_585: 1500,
     salary_min_2018: 32635,

@@ -244,6 +244,7 @@ hr {
 }
 
 .app__form {
+  position: -webkit-sticky;
   position: sticky;
   top: 1.2rem;
   z-index: 10000;
@@ -319,4 +320,36 @@ hr {
 
 .tab__panel_hidden {
   display: none;
+}
+
+.colomns {
+  display: flex;
+  
+  @media screen and (max-width: 500px) {
+    display: inline-block;
+  }
+}
+
+.colomns div:first-child {
+  @media screen and (max-width: 500px) {
+    float:left;  
+  }
+}
+
+.logo {
+  width: 100px;
+  transform: translate(0, 10px);
+  display: block;
+  margin: 0 1.5rem 0 0;
+  
+  @media screen and (max-width: 500px) {
+    width: 45px;
+    margin: 0 .5rem 1rem;
+    transform: translate(-10px, 10px);
+  }
+  
+}
+
+.logo img {
+  width: 100%;
 }
