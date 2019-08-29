@@ -606,8 +606,10 @@ $(function () {
       id: 'nalogAll',
       title: 'Все выплаты государству',
       description: 'Сумма всех выплат государству: НДФЛ, ОПС, ОМС, ФСС и взносов по «травматизму»',
-      unit: '₽'
+      unit: '₽',
+      active : true
     });
+    
 
     let tpl_ndfl = resultTpl({
       id: 'ndfl',
@@ -666,7 +668,6 @@ $(function () {
     <section> 
       <h2>Налоги</h2>
       ${tpl_nalogAll} 
-      <hr>
       ${tpl_ndfl} 
       ${tpl_ops} 
       ${tpl_oms} 
@@ -678,7 +679,10 @@ $(function () {
     </div>
     <section>
       <div class="tab">
-      <h2 class="tab__header">Средняя зарплата в регионах России за 2019 год</h2>
+      <div class="tab__header">
+        <h2>Средняя зарплата в регионах России за 2019 год</h2>
+        <div class="tab__description"></div>
+      </div>
       <div class="tab__panel tab__panel_hidden" id="salaryInRussia">
         ${salaryInRussiaTpl}
       </div>
@@ -686,7 +690,10 @@ $(function () {
     </section>
     <section>
       <div class="tab">
-      <h2 class="tab__header">Средняя зарплата по странам мира за 2019 год</h2>
+        <div class="tab__header">
+          <h2>Средняя зарплата по странам мира за 2019 год</h2>
+          <div class="tab__description"></div>
+        </div>
       <div class="tab__panel tab__panel_hidden" id="salaryInWorld">
         ${salaryInWorld}
       </div>
@@ -698,8 +705,10 @@ $(function () {
     function resultTpl(o) {
 
       var classname = (o.unit == '$') ? 'cost_dollar' : '';
+      var active = (o.active) ? 'result__line-active' : '';
+      
 
-      return `<div class="result__line" id="${o.id}">
+      return `<div class="result__line ${active}" id="${o.id}">
     <div class="result__head">
       <div class="result__title result__title_info">${o.title}</div>
       <div class="result__per result__per-month">
@@ -848,10 +857,10 @@ $(function () {
   }
 
   function renderRegions(arr) {
-
-    var result = `<div class="result__line result__line-my-salary">
+    
+    var result = `<div class="result__line result__line-active">
     <div class="result__head">
-      <div class="result__title">Моя зарплата (гросс)</div>
+      <div class="result__title"><span class="emoji">💰</span> Моя зарплата (гросс)</div>
       <div class="result__per result__per-month">
         <span class="cost">0.00</span> ₽/мес
       </div>
@@ -893,7 +902,7 @@ $(function () {
   
    
   function updateRegions(target, value, valueInPeriod){
-    var $mySalary = $(target).find('.result__line-my-salary').remove().clone();
+    var $mySalary = $(target).find('.result__line-active').remove().clone();
     var similar = 0;
     var $regions = $(target).find('.result__line-regions');    
     
