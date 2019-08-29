@@ -944,7 +944,7 @@ $(function () {
     }
     
     
-    $description.html(message);
+    $description.html('<p>'+message+'</p>');
     
   }
 
