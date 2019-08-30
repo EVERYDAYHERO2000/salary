@@ -663,7 +663,7 @@ $(function () {
 
 
     let tpl = `
-<din class="app__inner">
+<div class="app__inner">
   <form class="app__form">
   <div class="search">
     <input id="search" type="number" min="0" max="3000000" autofocus="" class="search__input search__input_not-empty" value="0">
@@ -782,6 +782,16 @@ $(function () {
   var $input = $inApp.find('.search__input');
   var $result = $inApp.find('.result');
 
+  
+  if(location.search && location.search.indexOf('salary') > 0){
+    var value = +location.search.split('=')[1];
+    
+    location.href = '#' + value;
+    
+    $input.val(value);
+    renderResult(value);
+  }
+  
 
   if (location.hash) {
     var value = +location.hash.replace('#', '');
