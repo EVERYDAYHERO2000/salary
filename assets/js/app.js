@@ -4,7 +4,7 @@ $(function () {
   const products = {
     salt: 17,
     buckwheat: 50,
-    dollar: 66.55,
+    dollar: 66.71,
     gas_95: 47.35,
     gold_585: 1500,
     salary_min_2018: 32635,
@@ -22,7 +22,15 @@ $(function () {
       "flag": "🇱🇮",
       "name": "Лихтенштейн",
       "value": 8166
-  }, {
+  },{
+      "flag": "🇬🇪",
+      "name": "Грузия",
+      "value": 357
+  },{
+      "flag": "🇦🇲",
+      "name": "Армения",
+      "value": 340
+  },{
       "flag": "🇧🇲",
       "name": "Бермуды",
       "value": 2500
