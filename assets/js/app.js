@@ -4,7 +4,7 @@ $(function () {
   const products = {
     salt: 17,
     buckwheat: 50,
-    dollar: 66.71,
+    dollar: 66.75,
     gas_95: 47.35,
     gold_585: 1500,
     salary_min_2018: 32635,
@@ -709,23 +709,26 @@ $(function () {
 
     function resultTpl(o) {
 
+      var id = (o.id) ? `id="${o.id}"` : '';
       var classname = (o.unit == '$') ? 'cost_dollar' : '';
       var active = (o.active) ? 'result__line-active' : '';
-
-
-      return `<div class="result__line ${active}" id="${o.id}">
+      var body = ( o.description && o.description.length ) ? `<div class="result__body"><p>${o.description}</p></div>` : ''
+      var region = (o.region) ? 'result__line-regions' : '';
+      var value = (o.value) ? o.value : 0;
+      var valueInPeriod = (o.valueInPeriod) ? o.valueInPeriod : 0;
+      var data = (o.data) ? `data-value="${o.data}"` : '';
+      
+      return `<div class="result__line ${active} ${region}" ${id} ${data}>
     <div class="result__head">
       <div class="result__title result__title_info">${o.title}</div>
       <div class="result__per result__per-month">
-        <span class="cost ${classname}">0</span> ${o.unit}/мес
+        <span class="cost ${classname}">${value}</span> ${o.unit}/мес
       </div>
       <div class="result__per result__per-year">
-        <span class="cost ${classname}">0</span> ${o.unit}/год
+        <span class="cost ${classname}">${valueInPeriod}</span> ${o.unit}/год
       </div>
     </div>
-    <div class="result__body">
-      <p>${o.description}</p>
-    </div>
+    ${body}
   </div>`;
     }
 
@@ -735,18 +738,15 @@ $(function () {
       var dollar = o.dollar;
       var id = o.id;
       var title = o.title;
+      
+      let result = resultTpl({
+        title: '<span class="emoji">💰</span> Моя зарплата (гросс)',
+        description: '',
+        unit: '₽',
+        active: true  
+      });
 
-      var result = `<div class="result__line result__line-active">
-    <div class="result__head">
-      <div class="result__title"><span class="emoji">💰</span> Моя зарплата (гросс)</div>
-      <div class="result__per result__per-month">
-        <span class="cost">0.00</span> ₽/мес
-      </div>
-      <div class="result__per result__per-year result__per_selected">
-        <span class="cost">0.00</span> ₽/год
-      </div>
-    </div>
-  </div>`;
+      
 
       for (var i = 0; i < arr.length; i++) {
 
@@ -754,17 +754,17 @@ $(function () {
         var value = (dollar) ? arr[i].value * dollar : arr[i].value;
         var valieInPeriod = value * 12;
 
-        result += `<div class="result__line result__line-regions" data-salary="${value}">
-    <div class="result__head">
-      <div class="result__title">${name}</div>
-      <div class="result__per result__per-month">
-        <span class="cost">${formatUnit(value.toFixed(2))}</span> ₽/мес
-      </div>
-      <div class="result__per result__per-year">
-        <span class="cost">${formatUnit(valieInPeriod.toFixed(2))}</span> ₽/год
-      </div>
-    </div>
-  </div>`;
+        result += resultTpl({
+          region: true,
+          title: name,
+          description: '',
+          unit: '₽',
+          value: formatUnit(value.toFixed(2)),
+          valueInPeriod: formatUnit(valieInPeriod.toFixed(2)),
+          data: value
+        });
+        
+        
       }
 
       return `<div class="tab">
@@ -937,7 +937,7 @@ $(function () {
 
     $regions.each(function (i, e) {
 
-      if ($(e).data('salary') >= value) {
+      if ($(e).data('value') >= value) {
         similar = i;
       }
 
@@ -947,7 +947,7 @@ $(function () {
     $mySalary.find('.result__per-year').find('.cost').html(formatUnit(valueInPeriod));
 
 
-    if (value >= $($regions[similar]).data('salary')) {
+    if (value >= $($regions[similar]).data('value')) {
       $mySalary.insertBefore($($regions[similar]));
       
       message += `Зарплата ${value} ₽/мес больше чем средняя зарплата в <strong>${$($regions[similar]).find('.result__title').text()}</strong>`;
@@ -981,8 +981,6 @@ $(function () {
   }
 
   function browserDetect() {
-
-
 
     var nVer = navigator.appVersion;
     var nAgt = navigator.userAgent;
