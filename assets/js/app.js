@@ -682,7 +682,7 @@ $(function () {
     <section>
       <div class="result__line" id="grossPerHour">
         <div class="result__head">
-          <div class="result__title result__title_info">Оклад в час (примерно)</div>
+          <div class="result__title result__title_info">Оклад в час</div>
           <div class="result__per result__per-hour result__per_selected">
             <span class="cost "><span class="cost__first">0</span><span class="cost__last">.00</span></span> ₽/час 
           </div>
@@ -708,6 +708,7 @@ $(function () {
     <div class="section">
       <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
     </div>
+    <hr>
     <section>
       ${salaryInRussiaTpl}
     </section>
@@ -892,6 +893,7 @@ $(function () {
     updValue('fss');
     updValue('insurance');
     
+    
     $('#grossPerHour').find('.result__per-hour .cost').html( formatUnit( (d['gross'] / 160).toFixed(2) ));
 
 
@@ -918,7 +920,7 @@ $(function () {
     value = $elem.val();
 
     if (value) {
-      $elem.attr('value', value);
+      $elem.prop('value', +value).attr('value', +value);
     } else {
       $elem.removeAttr('value');
     }
