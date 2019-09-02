@@ -680,6 +680,17 @@ $(function () {
   </form>
   <div class="result">
     <section>
+      <div class="result__line" id="grossPerHour">
+        <div class="result__head">
+          <div class="result__title result__title_info">Оклад в час (примерно)</div>
+          <div class="result__per result__per-hour result__per_selected">
+            <span class="cost "><span class="cost__first">0</span><span class="cost__last">.00</span></span> ₽/час 
+          </div>
+        </div>
+        <div class="result__body"><p>По законодательству, при 5 дневной рабочей неделе и 8 часовом рабочем дне нормой является 40 часов в неделю. В месяц получается 160 часов.</p><p><strong>оклад / 160 = оклад в час</strong></p></div>
+      </div>
+    </section>
+    <section>
       ${tpl_gross}
       ${tpl_fullCost}  
       <hr>
@@ -824,7 +835,7 @@ $(function () {
 
   $result.on('click', '.result__per', function () {
     if ($('body').is('.mobile')) {
-      $('.result__per').toggleClass('result__per_selected');
+      $('.result__per').not('.result__per-hour').toggleClass('result__per_selected');
     }
   });
 
@@ -880,6 +891,8 @@ $(function () {
     updValue('oms');
     updValue('fss');
     updValue('insurance');
+    
+    $('#grossPerHour').find('.result__per-hour .cost').html( formatUnit( (d['gross'] / 160).toFixed(2) ));
 
 
     $('#salaryInDollar').find('.result__per-month .cost').html(formatUnit((d['net'] / products.dollar).toFixed(2)));
