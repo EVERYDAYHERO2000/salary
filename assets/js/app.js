@@ -4,7 +4,7 @@ $(function () {
   const products = {
     salt: 17,
     buckwheat: 50,
-    dollar: 66.75,
+    dollar: 66.17,
     gas_95: 47.35,
     gold_585: 1500,
     salary_min_2018: 32635,
@@ -689,26 +689,31 @@ $(function () {
         </div>
         <div class="result__body"><p>По законодательству, при 5 дневной рабочей неделе и 8 часовом рабочем дне нормой является 40 часов в неделю. В месяц получается 160 часов.</p><p><strong>оклад / 160 = оклад в час</strong></p></div>
       </div>
-    </section>
-    <section>
+      <hr>
       ${tpl_gross}
+      <hr>
       ${tpl_fullCost}  
       <hr>
       ${tpl_salaryInDollar}
+      <hr>  
     </section>
     <section> 
       <h2>Налоги</h2>
       ${tpl_nalogAll} 
+      <hr>
       ${tpl_ndfl} 
+      <hr>
       ${tpl_ops} 
+      <hr>
       ${tpl_oms} 
+      <hr>
       ${tpl_fss} 
+      <hr>
       ${tpl_insurance}
     </section>
     <div class="section">
       <a id="salaryExport" class="link link_export" href="#" download="salary.csv">Экспортировать в CSV</a>
     </div>
-    <hr>
     <section>
       ${salaryInRussiaTpl}
     </section>

@@ -215,6 +215,11 @@ body {
   margin-left: 3px;
   color: #0a121b;
   opacity: .7;
+  
+  @media screen and (max-width: 500px) {
+     opacity: .5;
+  }
+  
 }
 
 .result__per-month,
