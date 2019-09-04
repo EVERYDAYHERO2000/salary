@@ -682,7 +682,7 @@ $(function () {
     <section>
       <div class="result__line" id="grossPerHour">
         <div class="result__head">
-          <div class="result__title result__title_info">Оклад в час</div>
+          <div class="result__title result__title_info"><span class="info">Оклад в час</span></div>
           <div class="result__per result__per-hour result__per_selected">
             <span class="cost "><span class="cost__first">0</span><span class="cost__last">.00</span></span> ₽/час 
           </div>
@@ -729,10 +729,11 @@ $(function () {
       var value = (o.value) ? o.value : 0;
       var valueInPeriod = (o.valueInPeriod) ? o.valueInPeriod : 0;
       var data = (o.data) ? `data-value="${o.data}"` : '';
+      var title = (o.region) ? o.title : `<span class="info">${o.title}</span>`;
       
       return `<div class="result__line ${active} ${region}" ${id} ${data}>
     <div class="result__head">
-      <div class="result__title result__title_info">${o.title}</div>
+      <div class="result__title result__title_info">${title}</div>
       <div class="result__per result__per-month">
         <span class="cost ${classname}">${value}</span> ${o.unit}/мес
       </div>

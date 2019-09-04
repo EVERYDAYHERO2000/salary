@@ -66,13 +66,14 @@ body {
   font-size: 2rem;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #32485f;
-  color: #fff;
+  background-color: #e2e2e2; 
+  color: #3e5974;
   border: none;
   box-sizing: border-box;
   transition: all .2s;
   height: 60px;
   box-shadow: inset 0 3px 10px rgba(0,0,0,0.2);
+  font-weight: 700;
 
   @media screen and (max-width: 500px) {
     padding: 2rem .8rem .8rem;
@@ -95,6 +96,9 @@ body {
   transition: transform .2s ease, font-size .2s ease;
   transform-origin: left center;
   white-space: nowrap;
+  color: rgba(15, 26, 38, 0.65);
+  letter-spacing: 0.2px;
+  font-weight: 500;
 
   @media screen and (max-width: 500px) {
     padding: 1.35rem .8rem .8rem;
@@ -116,7 +120,7 @@ body {
 
 .search__input:focus {
   outline: none;
-  background-color: #3e5974;
+  background-color: #e2e2e2;
   transition: background .2s;
 
 }
@@ -194,6 +198,23 @@ body {
     flex-basis: 50%;
   }
 
+}
+
+.result__title .info:after {
+  content: '?';
+  display: inline-block;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: hsla(0,0%,100%,.3);
+  font-size: 11px;
+  font-weight: 500;
+  width: 10px;
+  height: 10px;
+  line-height: 1;
+  text-align: center;
+  margin-left: 3px;
+  color: #0a121b;
+  opacity: .7;
 }
 
 .result__per-month,
