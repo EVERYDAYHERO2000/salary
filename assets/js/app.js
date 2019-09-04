@@ -694,8 +694,7 @@ $(function () {
       <hr>
       ${tpl_fullCost}  
       <hr>
-      ${tpl_salaryInDollar}
-      <hr>  
+      ${tpl_salaryInDollar} 
     </section>
     <section> 
       <h2>Налоги</h2>
