@@ -700,7 +700,6 @@ $(function () {
     <section> 
       <h2>Налоги</h2>
       ${tpl_nalogAll} 
-      <hr>
       ${tpl_ndfl} 
       <hr>
       ${tpl_ops} 
