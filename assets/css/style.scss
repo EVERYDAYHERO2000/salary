@@ -138,8 +138,38 @@ body {
 
 .result {
   padding: 2rem 0;
+  //display: flex;
+  width: 100%;
+  
+  @media screen and (max-width: 500px) {
+    display: block;  
+  }
+  
+}
+/*
+.result__main {
+  width: calc(100% - 200px);
+  flex-basis: calc(100% - 200px);
+  box-sizing: border-box;
+  
+  @media screen and (max-width: 500px) {
+    width: 100%;
+
+  }
+  
 }
 
+.result__sidebar {
+  width: 200px;
+  flex-basis: 200px;
+  
+  @media screen and (max-width: 500px) {
+    width: 100%;
+
+  }
+  
+}
+*/
 .result__line {
   display: flex;
   justify-content: space-between;
@@ -373,7 +403,7 @@ hr {
 }
 
 .logo {
-  width: 100px;
+  width: 50px;
   transform: translate(0, 10px);
   display: block;
   margin: 0 1.5rem 0 0;
@@ -388,4 +418,44 @@ hr {
 
 .logo img {
   width: 100%;
+}
+
+.tizer {
+  padding-left: 20px;
+  display: flex;
+  margin: 0;
+  
+  @media screen and (max-width: 500px) {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+
+.tizer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.tizer__image {
+  background: #fafafa;
+  display: flex;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  border-radius: 16px;
+  justify-content: center;
+  margin: 0 1.5rem 1.5rem 0;
+  
+  @media screen and (max-width: 500px) {
+     width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+  
+}
+
+.tizer__image img {
+  width: 60%;
 }
